@@ -1,0 +1,17 @@
+.git
+**/node_modules
+**/dist
+**/target
+**/output
+**/tmp
+**/.venv*
+**/__pycache__
+**/.env
+**/*.local.php
+**/*.log
+**/*.o
+trunk/core/judged/judged
+trunk/core/judged/judged.http
+trunk/core/judged/judgehub
+trunk/core/judge_client/judge_client
+trunk/core/judge_client/judge_client.http

@@ -1,0 +1,16 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.php text eol=lf
+*.sql text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
+makefile text eol=lf
+Makefile text eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.pdf binary

@@ -1,0 +1,626 @@
+/* Shared admin skin. Scoped to admin documents to isolate legacy frameworks. */
+.oj-admin-document {
+    --admin-text: #243447;
+    --admin-muted: #64748b;
+    --admin-border: #e2e8f0;
+    --admin-blue: #2563eb;
+    background: #fff !important;
+    color-scheme: light;
+}
+html.oj-admin-document body {
+    margin: 0 !important;
+    padding: 24px !important;
+    min-width: 0 !important;
+    min-height: 100vh;
+    background: #fff !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    color: var(--admin-text);
+    font: 14px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+.oj-admin-document :is(h1, h2, h3, h4) {
+    color: #152b4b;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 20px 0 14px;
+}
+.oj-admin-document h3 { font-size: 20px; }
+.oj-admin-document h4 { font-size: 16px; }
+.oj-admin-document center > h3 { text-align: left; }
+.oj-admin-document body > hr { display: none; }
+.oj-admin-document hr { border-color: var(--admin-border); margin: 20px 0; }
+.oj-admin-document a { color: var(--admin-blue); }
+.oj-admin-document a:hover { color: #1d4ed8; }
+.oj-admin-document a:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
+}
+.oj-admin-document :is(.table, .ui.table, table[border]) {
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 4px !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff !important;
+    color: var(--admin-text);
+    font-size: 13px;
+    box-shadow: none !important;
+}
+.oj-admin-document :is(.table, .ui.table, table[border]) > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+    padding: 11px 12px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--admin-border) !important;
+    vertical-align: middle;
+    line-height: 1.6;
+}
+.oj-admin-document :is(.table, .ui.table, table[border]) th {
+    background: #f1f5f9 !important;
+    color: #475569;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.oj-admin-document :is(.table, .ui.table, table[border]) > tbody > tr:nth-child(even) {
+    background: #f8fafc !important;
+}
+.oj-admin-document :is(.table, .ui.table, table[border]) > tbody > tr:hover {
+    background: #eff6ff !important;
+}
+.oj-admin-document :is(.btn, .ui.button, button.form-control, input[type=submit], input[type=reset], input[type=button]) {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    background-image: none !important;
+    color: #334155 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    font: 500 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    padding: 7px 13px;
+    height: auto;
+    min-height: 34px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.oj-admin-document :is(.btn-primary, .btn-info, .ui.primary.button, button[type=submit], input[type=submit]) {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #fff !important;
+}
+.oj-admin-document :is(.btn-success, .ui.positive.button) {
+    background: #0f9f6e !important;
+    border-color: #0f9f6e !important;
+    color: #fff !important;
+}
+.oj-admin-document :is(.btn-danger, .ui.negative.button, input[type=reset]) {
+    background: #fff1f2 !important;
+    border-color: #fecdd3 !important;
+    color: #be123c !important;
+}
+.oj-admin-document .btn-warning {
+    background: #fffbeb !important;
+    border-color: #fde68a !important;
+    color: #92400e !important;
+}
+.oj-admin-document :is(.btn, .ui.button, button.form-control, input[type=submit], input[type=reset], input[type=button]):hover {
+    filter: brightness(.96);
+}
+.oj-admin-document :is(.btn, button, input):disabled { opacity: .55; cursor: not-allowed; }
+.oj-admin-document :is(input[type=text], input[type=password], input[type=number], input[type=email], input[type=search], input[type=date], input[type=datetime-local], select, textarea) {
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    background: #fff;
+    color: var(--admin-text);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 7px 10px;
+    min-height: 36px;
+    box-shadow: none;
+}
+.oj-admin-document :is(input, select, textarea):focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 1px;
+}
+.oj-admin-document :is(input[type=checkbox], input[type=radio]) { accent-color: #2563eb; }
+.oj-admin-document label { color: #475569; font-weight: 600; }
+.oj-admin-document .form-group { margin-bottom: 18px; }
+.oj-admin-document .form-search { margin: 0 0 20px; text-align: left; }
+.oj-admin-document .form-search > * { margin: 3px; }
+.oj-admin-document :is(.padding, .container, .container-fluid) { max-width: 100%; }
+.oj-admin-document :is(.col, .bk, .news-content, .changepass, .rejudge, .give-source, .copy-problem, .changeid, .database, .msg) {
+    background: #fff !important;
+    box-shadow: none !important;
+    border: 1px solid var(--admin-border);
+    border-radius: 4px;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 20px;
+}
+.oj-admin-document :is(.pagination > li > a, .pagination > li > span) {
+    border-color: var(--admin-border); color: #2563eb;
+}
+.oj-admin-document .pagination > .active > a { background: #2563eb; color: #fff; }
+.oj-admin-document .ke-container { border-color: #cbd5e1; border-radius: 4px; }
+.oj-admin-document .ke-toolbar { background: #f8fafc; border-color: var(--admin-border); }
+.oj-admin-document .ke-outline[data-name="formatblock"] { display: none !important; }
+.oj-admin-document iframe[height="0px"] { display: none; }
+/* Override the old menu's fixed dark sidebar, including its inline styles. */
+html.oj-admin-document body.admin-menu-embedded {
+    padding: 0 !important;
+    background: #fff !important;
+}
+html.oj-admin-document body.admin-menu-embedded #sidebar {
+    background: #fff !important;
+    color: #334155;
+    padding: 12px !important;
+}
+.oj-admin-document #sidebar .sidebar-section {
+    border-color: #e2e8f0;
+    margin-bottom: 12px;
+}
+.oj-admin-document #sidebar .sidebar-section h3 {
+    color: #64748b;
+    font-size: 12px;
+    letter-spacing: .04em;
+    margin: 12px 8px 8px;
+}
+.oj-admin-document #sidebar a,
+html.oj-admin-document body.admin-menu-embedded #sidebar > .btn {
+    color: #334155 !important;
+    font-size: 13px;
+    border: 0 !important;
+    border-radius: 4px;
+    background: transparent !important;
+    box-shadow: none;
+}
+.oj-admin-document #sidebar a:hover,
+.oj-admin-document #sidebar a:focus-visible {
+    background: #eff6ff !important;
+    color: #2563eb !important;
+}
+.oj-admin-document #sidebar a font { color: inherit; }
+/* The outer shell shares the site's four-pixel corners and quiet borders. */
+.oj-admin-layout :is(.oj-admin-menu, .oj-admin-content) {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(30, 55, 90, .05);
+}
+.oj-admin-layout .oj-admin-panel-title {
+    background: #f8fafc;
+    color: #152b4b;
+    border-bottom: 1px solid #e2e8f0;
+}
+.oj-admin-layout .oj-admin-panel-title a { color: #2563eb; }
+@media (max-width: 767px) {
+    html.oj-admin-document body { padding: 14px !important; }
+    .oj-admin-document .form-inline .form-control { display: inline-block; width: auto; max-width: 100%; }
+    .oj-admin-document :is(.table, .ui.table, table[border]) { display: block; max-width: 100%; overflow-x: auto; }
+}
+
+/* Consistent problem-editor layout. Rich-text wrappers are managed by
+ * admin-form.js, so administrators only see the content they are editing. */
+html.oj-admin-document body.oj-admin-form-page {
+    padding: 24px 28px !important;
+    background: #f8fafc !important;
+}
+html.oj-admin-document .oj-admin-form-page > hr { display: none; }
+html.oj-admin-document .oj-admin-form-page #main {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+html.oj-admin-document form.oj-admin-form {
+    margin: 0;
+}
+html.oj-admin-document form.oj-admin-form > p {
+    margin: 0 0 18px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+}
+html.oj-admin-document form.oj-admin-form > p:first-of-type {
+    padding-top: 14px;
+}
+html.oj-admin-document form.oj-admin-form h3,
+html.oj-admin-document form.oj-admin-form h4 {
+    color: #152b4b;
+    margin: 8px 0 10px;
+}
+html.oj-admin-document form.oj-admin-form h4 {
+    font-size: 15px;
+}
+html.oj-admin-document form.oj-admin-form .input,
+html.oj-admin-document form.oj-admin-form select,
+html.oj-admin-document form.oj-admin-form textarea {
+    box-sizing: border-box;
+}
+html.oj-admin-document form.oj-admin-form textarea.input {
+    min-height: 96px;
+    padding: 10px 12px;
+    line-height: 1.55;
+}
+html.oj-admin-document form.oj-admin-form .ui.toggle.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 12px 10px 0;
+}
+html.oj-admin-document form.oj-admin-form .ui.toggle.checkbox label {
+    cursor: pointer;
+}
+html.oj-admin-document form.oj-admin-form .btn {
+    margin: 4px 6px 4px 0;
+}
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-toggle {
+    min-width: 108px;
+    border-color: #cbd5e1;
+    color: #334155;
+    background: #f8fafc;
+}
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-toggle:hover,
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-toggle.active {
+    border-color: #2563eb;
+    color: #fff;
+    background: #2563eb;
+}
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 50;
+}
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: min(900px, calc(100vw - 48px));
+    max-width: calc(100vw - 48px);
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, .2);
+    z-index: 1000;
+}
+html.oj-admin-document form.oj-admin-form .oj-admin-preview-panel iframe {
+    display: block;
+    width: 100% !important;
+    max-width: none;
+    height: min(760px, calc(100vh - 170px));
+    min-height: 420px;
+    border: 0;
+    background: #fff;
+}
+html.oj-admin-document form.oj-admin-form .full > p {
+    margin: 0 0 18px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+}
+html.oj-admin-document form.oj-admin-form .full .ke-container {
+    width: 100% !important;
+}
+html.oj-admin-document form.oj-admin-form .ke-edit-textarea {
+    min-height: 180px;
+    line-height: 1.55;
+}
+html.oj-admin-document form.oj-admin-form > div[align="center"] {
+    padding: 4px 0 16px;
+    text-align: right;
+}
+html.oj-admin-document form.oj-admin-form > div[align="center"] input[type="submit"] {
+    min-width: 100px;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    background: #2563eb;
+    cursor: pointer;
+}
+html.oj-admin-document form.oj-admin-form > div[align="center"] input[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+/* Dark theme shared by the admin shell and every admin iframe. */
+html.oj-admin-document[data-theme="dark"] {
+    --admin-text: #e6edf7;
+    --admin-muted: #a9bad0;
+    --admin-border: #2a3f5d;
+    --admin-border-strong: #3c587d;
+    --admin-blue: #60a5fa;
+    --admin-surface: #111c2e;
+    --admin-surface-muted: #17243a;
+    --admin-input: #0e192b;
+    background: #0b1220 !important;
+    color: var(--admin-text);
+    color-scheme: dark;
+}
+
+html.oj-admin-document[data-theme="dark"] body {
+    background: #0b1220 !important;
+    background-image: none !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(h1, h2, h3, h4) {
+    color: #f1f5fb !important;
+}
+
+html.oj-admin-document[data-theme="dark"] hr {
+    border-color: var(--admin-border) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] a {
+    color: var(--admin-blue);
+}
+
+html.oj-admin-document[data-theme="dark"] a:hover,
+html.oj-admin-document[data-theme="dark"] a:focus {
+    color: #93c5fd;
+}
+
+html.oj-admin-document[data-theme="dark"] label,
+html.oj-admin-document[data-theme="dark"] .control-label,
+html.oj-admin-document[data-theme="dark"] .help-block,
+html.oj-admin-document[data-theme="dark"] .text-muted {
+    color: var(--admin-muted) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+    border-bottom-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) th {
+    background: var(--admin-surface-muted) !important;
+    color: #dbe7f5 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:nth-child(even) {
+    background: #142239 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:hover {
+    background: #1b3151 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.btn, .ui.button, button.form-control, input[type=button]):not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info):not(.primary):not(.positive):not(.negative) {
+    background: #1a2a43 !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.btn, .ui.button, button.form-control, input[type=button]):not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info):not(.primary):not(.positive):not(.negative):hover,
+html.oj-admin-document[data-theme="dark"] .btn-default:hover {
+    background: #25405f !important;
+    color: #ffffff !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.btn-success, .ui.positive.button) {
+    background: #047857 !important;
+    border-color: #34d399 !important;
+    color: #ecfdf5 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.btn-danger, .ui.negative.button, input[type=reset]) {
+    background: #7f1d1d !important;
+    border-color: #fb7185 !important;
+    color: #ffe4e6 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .btn-warning {
+    background: #713f12 !important;
+    border-color: #fbbf24 !important;
+    color: #fef3c7 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(input[type=text], input[type=password], input[type=number], input[type=email], input[type=search], input[type=date], input[type=datetime-local], select, textarea, .form-control) {
+    background: var(--admin-input) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(input, select, textarea, .form-control)::placeholder {
+    color: #8195b1 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(input, select, textarea, .form-control):focus,
+html.oj-admin-document[data-theme="dark"] :is(input, select, textarea, .form-control):focus-visible {
+    border-color: var(--admin-blue) !important;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, .2) !important;
+    outline: none;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(input, select, textarea, .form-control):disabled {
+    background: #18253a !important;
+    color: #8195b1 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.col, .bk, .news-content, .changepass, .rejudge, .give-source, .copy-problem, .changeid, .database, .msg) {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.pagination > li > a, .pagination > li > span) {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-blue) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .pagination > .active > a {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.well, .panel, .panel-default, .panel-heading, .panel-footer, .alert, .modal-content, .dropdown-menu) {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .panel-heading,
+html.oj-admin-document[data-theme="dark"] .panel-footer {
+    background: var(--admin-surface-muted) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .dropdown-menu > li > a {
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .dropdown-menu > li > a:hover,
+html.oj-admin-document[data-theme="dark"] .dropdown-menu > li > a:focus {
+    background: #1b3151 !important;
+    color: #dbeafe !important;
+}
+
+html[data-theme="dark"] .oj-admin-layout :is(.oj-admin-menu, .oj-admin-content) {
+    background: #111c2e !important;
+    border-color: #1b3151 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .28) !important;
+}
+
+html[data-theme="dark"] .oj-admin-layout .oj-admin-panel-title {
+    background: linear-gradient(135deg, #1b3151, #0f1b31) !important;
+    border-bottom-color: #1b3151 !important;
+    color: #f1f5fb !important;
+}
+
+html[data-theme="dark"] .oj-admin-layout .oj-admin-panel-title a {
+    color: #93c5fd !important;
+}
+
+html[data-theme="dark"] .oj-admin-layout .oj-admin-content iframe {
+    background: #0b1220 !important;
+    border-color: #1b3151 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] #sidebar,
+html.oj-admin-document[data-theme="dark"] body.admin-menu-embedded #sidebar {
+    background: #111c2e !important;
+    border-right-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] #sidebar .sidebar-section {
+    border-bottom-color: var(--admin-border) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] #sidebar .sidebar-section h3 {
+    color: #b8c8dc !important;
+}
+
+html.oj-admin-document[data-theme="dark"] #sidebar a,
+html.oj-admin-document[data-theme="dark"] body.admin-menu-embedded #sidebar > .btn {
+    color: #dbe7f5 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] #sidebar a:hover,
+html.oj-admin-document[data-theme="dark"] #sidebar a:focus-visible,
+html.oj-admin-document[data-theme="dark"] body.admin-menu-embedded #sidebar > .btn:hover {
+    background: #1b3151 !important;
+    color: #93c5fd !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .ke-container,
+html.oj-admin-document[data-theme="dark"] .ke-toolbar,
+html.oj-admin-document[data-theme="dark"] .ke-edit-iframe {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .ke-toolbar {
+    background: var(--admin-surface-muted) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .oj-admin-form-page {
+    background: #0b1220 !important;
+}
+
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form > p,
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form .full > p {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form h3,
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form h4 {
+    color: #f1f5fb !important;
+}
+
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form .oj-admin-preview-toggle {
+    background: var(--admin-surface-muted) !important;
+    border-color: var(--admin-border-strong) !important;
+    color: var(--admin-text) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form .oj-admin-preview-panel,
+html.oj-admin-document[data-theme="dark"] form.oj-admin-form .oj-admin-preview-panel iframe {
+    background: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+}
+
+html.oj-admin-document[data-theme="dark"] [style*="color: #000"],
+html.oj-admin-document[data-theme="dark"] [style*="color:#000"] {
+    color: var(--admin-text) !important;
+}
+
+/* Bootstrap hover rules are loaded by several admin pages after the shared
+   skin, so keep their dark-mode highlight explicit and high priority. */
+html.oj-admin-document[data-theme="dark"] .btn-default:hover,
+html.oj-admin-document[data-theme="dark"] .btn-default:focus,
+html.oj-admin-document[data-theme="dark"] .btn-default:active,
+html.oj-admin-document[data-theme="dark"] .dropdown-toggle:hover,
+html.oj-admin-document[data-theme="dark"] .dropdown-toggle:focus,
+html.oj-admin-document[data-theme="dark"] #sidebar a:hover,
+html.oj-admin-document[data-theme="dark"] #sidebar a:focus,
+html.oj-admin-document[data-theme="dark"] .nav > li > a:hover,
+html.oj-admin-document[data-theme="dark"] .nav > li > a:focus,
+html.oj-admin-document[data-theme="dark"] .pagination > li > a:hover,
+html.oj-admin-document[data-theme="dark"] .pagination > li > a:focus {
+    background: #1b3151 !important;
+    background-image: none !important;
+    border-color: #4b6d99 !important;
+    color: #f1f5fb !important;
+    filter: none !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.btn, .ui.button, button, input[type=button]):not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info):not(.primary):not(.positive):not(.negative):hover,
+html.oj-admin-document[data-theme="dark"] :is(.btn, .ui.button, button, input[type=button]):not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info):not(.primary):not(.positive):not(.negative):focus {
+    background: #1b3151 !important;
+    background-image: none !important;
+    border-color: #4b6d99 !important;
+    color: #f1f5fb !important;
+    filter: none !important;
+}
+
+html.oj-admin-document[data-theme="dark"] .table-hover > tbody > tr:hover,
+html.oj-admin-document[data-theme="dark"] table:hover > tbody > tr:hover {
+    background: #1b3151 !important;
+    color: #f1f5fb !important;
+}
+
+/* Bootstrap applies the hover color to cells, so the row rule alone cannot
+   override the light background on admin help and other table pages. */
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:hover > :is(th, td),
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:focus-within > :is(th, td) {
+    background: #1b3151 !important;
+    background-color: #1b3151 !important;
+    color: #f1f5fb !important;
+}
+
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:hover > :is(th, td) p,
+html.oj-admin-document[data-theme="dark"] :is(.table, .ui.table, table[border]) > tbody > tr:focus-within > :is(th, td) p {
+    color: #f1f5fb !important;
+}

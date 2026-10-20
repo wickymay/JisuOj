@@ -1,0 +1,105 @@
+/* Neutral graphite and silver with restrained brass accents in night mode. Scope every token
+   and override to this route so navigating away restores the platform theme. */
+html[data-theme="dark"] .app-shell:has(.archive-page) {
+  --archive-bg: #151515;
+  --archive-surface: #202020;
+  --archive-raised: #303030;
+  --archive-hover: #3c3c3c;
+  --archive-ink: #e6e6e6;
+  --archive-muted: #b0b0b0;
+  --archive-dim: #a0a0a0;
+  --archive-gold: #cfad74;
+  --archive-line: #454545;
+  --archive-success: #d1c4a8;
+  --archive-danger: #edb09a;
+  --archive-on-accent: #202020;
+  --archive-action: #c7c7c7;
+  --archive-action-hover: #dedede;
+  --archive-action-muted: #474747;
+  background: radial-gradient(ellipse at 28% 36%, #2b2b2b 0%, var(--archive-bg) 70%);
+}
+html[data-theme="dark"] body:has(.archive-page) { background: #151515; }
+html[data-theme="dark"] .app-shell:has(.archive-page) > .topbar { background: #1c1c1ce8; border-color: var(--archive-line); color: var(--archive-ink); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .brand { color: var(--archive-ink); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .nav > a,
+html[data-theme="dark"] .app-shell:has(.archive-page) .account > a,
+html[data-theme="dark"] .app-shell:has(.archive-page) .link-button { color: var(--archive-muted); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .nav > a:hover { background: var(--archive-raised); color: var(--archive-ink); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .nav > a.router-link-active { background: #30303080; border-color: var(--archive-gold); color: var(--archive-ink); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .nav.open { background: var(--archive-surface); border-color: var(--archive-line); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-trigger { color: var(--archive-ink); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-trigger:hover,
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-trigger[aria-expanded="true"] { background: var(--archive-raised); border-color: var(--archive-line); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-avatar { background: linear-gradient(135deg, #525252, #7b7b7b); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-caret { color: var(--archive-muted); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown { background: var(--archive-surface); border-color: var(--archive-line); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown-item { color: var(--archive-ink) !important; }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown-item:hover,
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown-item:focus-visible { background: var(--archive-raised); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown-divider { background: var(--archive-line); }
+html[data-theme="dark"] .app-shell:has(.archive-page) .account-dropdown-logout { color: var(--archive-danger) !important; }
+
+html[data-theme="dark"] .archive-page { --archive-ink: #e6e6e6; --archive-muted: #b0b0b0; --archive-gold: #cfad74; --archive-line: #454545; color-scheme: dark; }
+html[data-theme="dark"] .archive-page ::selection { background: #766443; color: #fff8e9; }
+html[data-theme="dark"] .archive-page :is(button, a):focus-visible { outline-color: var(--archive-gold); }
+html[data-theme="dark"] .archive-stage:focus-visible { outline-color: var(--archive-gold); }
+html[data-theme="dark"] :is(.archive-preview-badge, .archive-floating-id small, .archive-inspector h3 > span) { color: var(--archive-gold); }
+html[data-theme="dark"] :is(.archive-total, .archive-view-switch button, .archive-source > span, .archive-motion-toggle, .archive-terminal-brand .archive-mono, .archive-scene-caption > span, .archive-selection-label, .archive-origin, .archive-dossier-meta, .archive-description > p, .archive-user-status) { color: var(--archive-muted); }
+html[data-theme="dark"] :is(.archive-total strong, .archive-floating-id strong, .archive-dossier-id, .archive-origin strong, .archive-inspector h3, .archive-limits dd, .archive-stat-numbers strong) { color: var(--archive-ink); }
+html[data-theme="dark"] :is(.archive-search-input kbd, .archive-scene-caption small, .archive-floating-id > span, .archive-scene-coordinate, .archive-selection-label i, .archive-scroll-hint, .archive-page-navigation, .archive-inspector-top, .archive-dossier-id small, .archive-limits dt, .archive-stat-numbers span, .archive-inspector-footnote) { color: var(--archive-dim); }
+html[data-theme="dark"] .archive-view-switch button:hover { color: var(--archive-ink); }
+html[data-theme="dark"] .archive-view-switch button.active { color: var(--archive-ink); background: var(--archive-raised); }
+html[data-theme="dark"] .archive-search { background: #202020db; border-color: var(--archive-line); }
+html[data-theme="dark"] :is(.archive-search-input > svg, .archive-terminal-brand > svg) { stroke: var(--archive-muted); }
+html[data-theme="dark"] .archive-search-input input { color: var(--archive-ink); }
+html[data-theme="dark"] .archive-search-input input::placeholder { color: var(--archive-dim); }
+html[data-theme="dark"] .archive-search-input:focus-within { box-shadow: inset 0 -2px var(--archive-gold); }
+html[data-theme="dark"] .archive-source { border-color: var(--archive-line); }
+html[data-theme="dark"] .archive-source select { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-source option { color: var(--archive-ink); background: var(--archive-surface); }
+html[data-theme="dark"] .archive-search-button { color: var(--archive-on-accent); background: var(--archive-action); }
+html[data-theme="dark"] .archive-search-button:hover:not(:disabled) { background: var(--archive-action-hover); }
+html[data-theme="dark"] :is(.archive-motion-toggle i, .archive-floating-id small i, .archive-inspector-top i, .archive-index-strip .active i, .archive-rate-track i) { background: var(--archive-gold); }
+html[data-theme="dark"] .archive-motion-toggle i.paused { background: var(--archive-dim); }
+html[data-theme="dark"] .archive-index-strip i { background: var(--archive-line); }
+html[data-theme="dark"] .archive-index-strip .solved i { background: #8f8f8f; }
+html[data-theme="dark"] .archive-index-strip .active i { background: var(--archive-gold); }
+html[data-theme="dark"] .archive-controls button { color: var(--archive-ink); background: var(--archive-raised); }
+html[data-theme="dark"] .archive-controls button:hover:not(:disabled) { background: var(--archive-hover); }
+html[data-theme="dark"] :is(.archive-page-navigation strong, .archive-page-navigation button) { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-page-navigation button:hover:not(:disabled) { color: var(--archive-gold); }
+html[data-theme="dark"] .archive-user-status.solved { color: var(--archive-success); }
+html[data-theme="dark"] .archive-rate-track { background: var(--archive-line); }
+html[data-theme="dark"] .archive-open-problem { color: var(--archive-on-accent); background: var(--archive-action); }
+html[data-theme="dark"] .archive-open-problem:hover { color: var(--archive-on-accent); background: var(--archive-action-hover); }
+html[data-theme="dark"] .archive-open-problem .archive-mono { color: var(--archive-action-muted); }
+html[data-theme="dark"] .archive-inspector-placeholder { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-inspector-placeholder svg { stroke: var(--archive-dim); }
+
+/* Loading, empty/error states and the non-WebGL fallback need night surfaces too. */
+html[data-theme="dark"] .archive-load-error { background: #3a2923; color: var(--archive-danger); }
+html[data-theme="dark"] :is(.archive-load-error button, .archive-detail-error button) { border-color: #ae8162; color: var(--archive-danger); }
+html[data-theme="dark"] .archive-detail-error { color: var(--archive-danger); }
+html[data-theme="dark"] :is(.archive-empty, .archive-stage-loading) { background: #151515d9; }
+html[data-theme="dark"] .archive-empty > span { color: var(--archive-gold); }
+html[data-theme="dark"] .archive-empty h2 { color: var(--archive-ink); }
+html[data-theme="dark"] :is(.archive-empty p, .archive-stage-loading p) { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-empty button { border-color: var(--archive-gold); color: var(--archive-gold); }
+html[data-theme="dark"] .archive-stage-loading > i { border-color: var(--archive-line); border-top-color: var(--archive-gold); }
+html[data-theme="dark"] .archive-skeleton i { background: var(--archive-line); }
+html[data-theme="dark"] :is(.archive-fallback > span, .archive-fallback small, .archive-fallback button > span) { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-fallback button { color: var(--archive-ink); border-color: var(--archive-line); background: var(--archive-surface); }
+html[data-theme="dark"] .archive-fallback button.selected { border-color: var(--archive-gold); background: var(--archive-raised); }
+html[data-theme="dark"] .archive-table th { color: var(--archive-ink); background: var(--archive-raised); border-color: var(--archive-line); }
+html[data-theme="dark"] .archive-table td { color: var(--archive-muted); border-color: var(--archive-line); }
+html[data-theme="dark"] .archive-table a { color: var(--archive-ink); }
+html[data-theme="dark"] .archive-table .result-code.accepted { color: var(--archive-success); }
+html[data-theme="dark"] .archive-table a:hover { color: var(--archive-gold); }
+html[data-theme="dark"] .archive-table tbody tr:hover { background: var(--archive-raised); }
+html[data-theme="dark"] .archive-table :is(.muted, .empty, .loading) { color: var(--archive-dim); }
+html[data-theme="dark"] .archive-page > .pager { color: var(--archive-muted); }
+html[data-theme="dark"] .archive-page > .pager .button { background: var(--archive-raised); color: var(--archive-ink); border-color: var(--archive-line); }
+html[data-theme="dark"] .archive-page > .pager .button:hover:not(:disabled) { background: var(--archive-hover); }
+@media (max-width: 800px) {
+  html[data-theme="dark"] .archive-open-problem { box-shadow: 0 -8px 24px var(--archive-bg); }
+}

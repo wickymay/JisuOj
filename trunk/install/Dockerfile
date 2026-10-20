@@ -1,0 +1,78 @@
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND noninteractive
+#RUN     echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+#RUN     echo "100.100.2.148 mirrors.cloud.aliyuncs.com" >> /etc/hosts
+#RUN     sed 's/archive.ubuntu/mirrors.aliyun/g' /etc/apt/sources.list.d/ubuntu.sources > /etc/apt/sources.list.d/aliyun.sources
+#RUN     sed -i 's/security.ubuntu/mirrors.aliyun/g' /etc/apt/sources.list.d/aliyun.sources
+RUN     apt-get update && apt-get -y upgrade
+
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        apt-utils 	
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmariadb-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmysqlclient-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmysql++-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        build-essential 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        flex 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        g++ 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends       python 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        python3
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends   python3-pandas python3-pandas-lib
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	fp-compiler 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	mono-devel 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	busybox 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	dos2unix
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends      openjdk-17-jdk
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	iptables 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	wget
+RUN     apt-get -y install sqlite3
+RUN     useradd -m -u 1536 judge
+RUN     cd /home/judge/ && \ 
+	wget dl.hustoj.com/hustoj.tar.gz && \
+        tar xzf hustoj.tar.gz 
+#Github update
+#RUN	svn up /home/judge/src 
+RUN     cd /home/judge/src/core/ && bash make.sh 
+
+# for more compilers, VMs and runtimes , remove # and run "docker build -t hustoj ."
+
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends ruby
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gobjc
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends clang
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends guile-3.0
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends lua5.3
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends nodejs
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends golang
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends sqlite3
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gfortran
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends octave
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gnucobol
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends r-base
+#RUN     wget -O /opt/cangjie.tar.gz http://dl3.hustoj.com/docker/Cangjie-STS-linux_x64.tar.gz && cd /opt && tar xzf cangjie.tar.gz && chmod +rx -R cangjie && rm cangjie.tar.gz
+
+#  Scratch3 judge need these lines
+#RUN wget -c http://dl.hustoj.com/scratch-run_0.1.5_linux_amd64.zip
+#RUN apt-get install unzip
+#RUN unzip scratch-run_0.1.5_linux_amd64.zip
+#RUN mv scratch-run /usr/bin
+#RUN chmod +x /usr/bin/scratch-run
+#RUN apt-get update
+
+# install debian package of similarity-tester
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends similarity-tester
+RUN cp /usr/bin/sim_c++ /usr/bin/sim_cc
+# make Chinese Character works in Docker
+RUN apt-get install -y locales locales-all
+RUN locale-gen zh_CN.UTF-8 && dpkg-reconfigure locales && /usr/sbin/update-locale LANG=zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8  
+ENV LANGUAGE zh_CN:zh  
+ENV LC_ALL zh_CN.UTF-8 
+
+#generate gch file for faster compiling speed
+RUN g++ -x c++-header -O2 -std=c++14 `find /usr/include/ -name "stdc++.h"`
+RUN gcc -x c-header -O2 -std=c99 /usr/include/stdio.h
+
+#copy files for interactor and spj build from testlib.h
+COPY testlib.h /usr/include
+COPY makeout.sh /usr/bin/
+#Baota need next two lines
+#RUN useradd -u 1001 www
+#RUN chown www /home/judge

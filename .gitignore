@@ -1,0 +1,47 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.local.php
+global.php
+*.pem
+*.key
+
+# Dependencies and generated output
+**/node_modules/
+**/dist/
+**/target/
+**/__pycache__/
+*.py[cod]
+*.tsbuildinfo
+*.class
+*.o
+*.obj
+*.log
+*.pid
+.venv*/
+.venv-rag
+**/models/
+**/tmp/
+**/output/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Compiled judge programs
+trunk/core/judged/judged
+trunk/core/judged/judged.http
+trunk/core/judged/judgehub
+trunk/core/judged/*.o
+trunk/core/judge_client/judge_client
+trunk/core/judge_client/judge_client.http
+trunk/debian/
+
+# Runtime uploads and private data
+trunk/web/upload/
+trunk/web/cache/
+trunk/web/data/
+backups/
+*.sql.gz
+*.sql.zip

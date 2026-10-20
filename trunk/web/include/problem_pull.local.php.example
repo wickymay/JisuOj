@@ -1,0 +1,6 @@
+<?php
+// Copy this file to problem_pull.local.php on the deployed server and replace
+// the placeholder. watch-web-sync.ps1 excludes the .local.php filename.
+$PROBLEM_PULL_AI_API_KEY = '';
+$PROBLEM_PULL_AI_ENDPOINT = 'https://api.deepseek.com/chat/completions';
+$PROBLEM_PULL_AI_MODEL = 'deepseek-v4-flash';

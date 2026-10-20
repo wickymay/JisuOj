@@ -1,0 +1,203 @@
+{
+  "generator": "book-to-skill",
+  "converter_commit": "a24e62f4d8caf2ee433f6e48d9073800f56f906e",
+  "mode": "technical",
+  "depth": "study",
+  "organization": "cross-book teaching topics",
+  "extraction_estimated_tokens": 1595794,
+  "all_sources_hash_matched": true,
+  "all_pdf_page_markers_continuous": true,
+  "full_text_accuracy_approved": false,
+  "scope": "Nine complete transcriptions indexed; selected core passages probed and visually reviewed. Not an exhaustive per-page or per-exercise conversion.",
+  "books": [
+    {
+      "book_id": "B01",
+      "title": "算法竞赛入门经典（第2版）",
+      "author": "刘汝佳",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/算法竞赛入门经典（第2版）.txt",
+      "text_sha256": "182f06fa5bf35bce462044b59a555dd6e482441689f5db33cb6ddf9ec0a738ba",
+      "pdf_pages": 486,
+      "pdf_sha256": "da1d36650f073d9c09d2799360d27893c15dc49a2a497a4bc12658ec5ccb1d21",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 249,
+          "scope": "下界二分更新、尾后返回值与区间约定",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        },
+        {
+          "pdf_page": 380,
+          "scope": "松弛操作、邻接表与稀疏图成本",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B02",
+      "title": "算法竞赛（上册）",
+      "author": "罗勇军、郭卫斌",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/算法竞赛（上册）.txt",
+      "text_sha256": "4e2778ab3ca6e73d84fcef159ad5b3c5ddc09a5ee561c0cbd402697bfff0f959",
+      "pdf_pages": 406,
+      "pdf_sha256": "7937d7364f49f5d497643c1ee0670b27344986691021bc069248b2ca661597c3",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 173,
+          "scope": "迭代路径压缩保存旧父节点后更新",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        },
+        {
+          "pdf_page": 341,
+          "scope": "0/1背包转移及一维倒序容量循环",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B03",
+      "title": "算法竞赛（下册）",
+      "author": "罗勇军、郭卫斌",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/算法竞赛（下册）.txt",
+      "text_sha256": "c68c42d237022ff91a87af5b33a95c0caaacbf0de3ddea7ecb19ba35d81b3f83",
+      "pdf_pages": 330,
+      "pdf_sha256": "885c201be96b05a146d8dd3f493d848231b1e7fa8b2d82a13aa1aa8fbbdb04f5",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 202,
+          "scope": "模式前后缀与Next回退；本包另用零基pi定义",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B04",
+      "title": "算法竞赛入门经典——训练指南",
+      "author": "刘汝佳、陈锋",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/算法竞赛入门经典——训练指南.txt",
+      "text_sha256": "b5ff2559a1591d64a245c42d48490eb7c2f460b606abcd215bdffa07df7bc898",
+      "pdf_pages": 529,
+      "pdf_sha256": "8d20f4e087deb93aa674719d7af89af4320d4893f9a19964a9181fb8036551f4",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 41,
+          "scope": "回溯时减少计数并在失败分支后还原",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B05",
+      "title": "ACM国际大学生程序设计竞赛——基本算法",
+      "author": "滕国文、李昊",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/ACM国际大学生程序设计竞赛——基本算法.txt",
+      "text_sha256": "ec7099311718648b29ea79447ff7f2f36abb7c93d02e9ee1f26561c2b680cc38",
+      "pdf_pages": 233,
+      "pdf_sha256": "6ad12c467096d2fd21f5b24c4bd52c8f8e0cd3cd26431240b53604b2743a6b36",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 137,
+          "scope": "最优子结构和贪心选择性质；不采用适用范围泛化措辞",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B06",
+      "title": "ACM国际大学生程序设计竞赛——算法与实现",
+      "author": "俞勇",
+      "text_file": "output/RAG资料集/正文资料/01_算法知识与实现/ACM国际大学生程序设计竞赛——算法与实现.txt",
+      "text_sha256": "e570d2ad12d66736679e46438a911f7633c03c965c6bc259d7684ed84346ccf9",
+      "pdf_pages": 285,
+      "pdf_sha256": "02bf73dbb65b355bb4f31e7289bfdb08c8317e8480ee5415c4c1f7598d03598e",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 20,
+          "scope": "gcd取余恒等式、零余数终止",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        },
+        {
+          "pdf_page": 125,
+          "scope": "二维叉积与点积公式",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B07",
+      "title": "算法竞赛入门经典——习题与解答",
+      "author": "陈锋",
+      "text_file": "output/RAG资料集/正文资料/02_题目与题解/算法竞赛入门经典——习题与解答.txt",
+      "text_sha256": "4fa32df0cacd58c8aa6a718bf59749ca828a8838cb1dd775434605af4ba8a064",
+      "pdf_pages": 444,
+      "pdf_sha256": "4de45a213cad702a3cc3a5bdf39026011d90e5cf5705adbae573d3c0ae346f01",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 168,
+          "scope": "并列答案比较方向、区间端点和边界枚举；未认证整道题解",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B08",
+      "title": "ACM国际大学生程序设计竞赛——题目与解读",
+      "author": "俞勇",
+      "text_file": "output/RAG资料集/正文资料/02_题目与题解/ACM国际大学生程序设计竞赛——题目与解读.txt",
+      "text_sha256": "409fdbe17b7e2e3aa239c903267a699a138d6ed4cad00ae870fe8daccbf1c434",
+      "pdf_pages": 643,
+      "pdf_sha256": "4eea579b35468d7c5c9ec5733db1dcacd3fb399c2cf119df1aaeabd9fc4cbced",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 86,
+          "scope": "时间与地点联合状态、阈值判定建模；未认证整道流题解",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "book_id": "B09",
+      "title": "ACM国际大学生程序设计竞赛——知识与入门",
+      "author": "俞勇",
+      "text_file": "output/RAG资料集/正文资料/03_学习与竞赛指导/ACM国际大学生程序设计竞赛——知识与入门.txt",
+      "text_sha256": "3a8f37375356823ebcf44b28bf6fdd10b993a99def5b25ad0e27896c0aac7aa3",
+      "pdf_pages": 214,
+      "pdf_sha256": "8dea094ed50010a45377889542cd2fb7a8c70e7e6790382e9e41ad6d74bc14ff",
+      "all_pages_indexed": true,
+      "independent_full_text_review": false,
+      "visual_reviews": [
+        {
+          "pdf_page": 16,
+          "scope": "算法、读题、练习、交流的入门框架",
+          "reviewer": "Codex visual comparison",
+          "date": "2026-10-18"
+        }
+      ]
+    }
+  ]
+}

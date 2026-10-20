@@ -1,0 +1,29 @@
+#!/bin/bash
+export DATE=`date +%Y%m%d%H%M`
+cd /home/judge/
+git clone https://gitee.com/zhblue/hustoj.git git
+cd git
+git pull 
+cd ..
+chmod +x git/trunk/install/merge.sh
+cp git/trunk/web/include/db_info.inc.php ./
+git/trunk/install/merge.sh src/web/include/db_info.inc.php db_info.inc.php
+cp -r git/trunk/* src/
+cp db_info.inc.php src/web/include/
+cd src/core
+pkill -9 judged
+bash make.sh
+cd ../install
+chmod +x g++.sh gcc.sh makeout.sh
+mysql jol< update.sql
+sed -i 's/OJ_INTERNAL_CLIENT=1/OJ_INTERNAL_CLIENT=0/g' /home/judge/etc/judge.conf
+judged
+
+web_user=`grep www /etc/passwd|awk -F: '{print $1}'`
+mkdir /var/log/hustoj/
+chown -R $web_user /var/log/hustoj
+chmod 710 -R /home/judge/data 
+chmod 700 /home/judge/etc/judge.conf
+chmod 770 /home/judge/src/web/upload
+chown $web_user -R /home/judge/src/web/upload
+

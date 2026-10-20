@@ -1,0 +1,34 @@
+/* The original JISUOJ navy-and-blue palette, kept as an explicit theme. */
+:root[data-theme="classic"] {
+  color-scheme: dark;
+  --bg: #08111f;
+  --surface: #101c2f;
+  --surface-2: #14233a;
+  --surface-3: #1b2d48;
+  --line: #2b4262;
+  --line-strong: #486487;
+  --text: #eef5ff;
+  --muted: #a9bad0;
+  --primary: #37a0ff;
+  --primary-strong: #0a7de0;
+  --on-primary: #ffffff;
+  --success: #42d392;
+  --success-soft: #123629;
+  --danger: #ff646d;
+  --danger-soft: #321b24;
+  --warning: #f4c95d;
+  --warning-soft: #382f19;
+  --purple: #c197ff;
+  --purple-soft: #2b2440;
+  --accent: #37a0ff;
+  --accent-text: #8bcaff;
+  --accent-soft: #173858;
+  --field-bg: #101c2f;
+  --hover-bg: #1b2d48;
+  --card-shadow: 0 12px 30px rgba(0,0,0,.12);
+  --panel-gradient: linear-gradient(125deg, #122743 0%, #0c1a2c 65%, #17375b 100%);
+  color: var(--text);
+  background: var(--bg);
+}
+
+:root[data-theme="classic"] .theme-option.active { color: #eef5ff !important; }

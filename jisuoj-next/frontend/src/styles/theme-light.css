@@ -1,0 +1,193 @@
+/* Archive-inspired light theme: warm paper, graphite/olive ink, brass accents.
+   Keep the theme prefix at zero specificity so the archive's own controls and
+   route-scoped palette win regardless of lazy CSS load order. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e9e5df;
+  --surface: #f8f5ee;
+  --surface-2: #ede9df;
+  --surface-3: #e1ddcf;
+  --line: #cec9bf;
+  --text: #30352f;
+  --muted: #5e6255;
+  --primary: #5a6748;
+  --primary-strong: #424c39;
+  --success: #426a43;
+  --danger: #a0483c;
+  --warning: #825d25;
+  --purple: #72537d;
+  --accent: #a27636;
+  --accent-text: #805d29;
+  --accent-soft: #eee3cd;
+  --line-strong: #a6a18f;
+  --field-bg: #fcfaf5;
+  --hover-bg: #e3e4d8;
+  --on-primary: #f8f5ee;
+  --success-soft: #e4ecdf;
+  --danger-soft: #f5e5df;
+  --warning-soft: #f3ead7;
+  --purple-soft: #eee5ef;
+  --card-shadow: 0 8px 24px rgba(61,58,43,.06);
+  --panel-gradient: linear-gradient(120deg, #f6f3ec, #e2e2d5);
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Shell, type and shared controls. Component colors below use these tokens. */
+:where(html[data-theme="light"]) body { background: radial-gradient(ellipse at 28% 12%, #f6f3ec, var(--bg) 65%); }
+:where(html[data-theme="light"]) ::selection { background: #d7c7a2; color: var(--text); }
+:where(html[data-theme="light"]) a { color: var(--primary); }
+:where(html[data-theme="light"]) a:hover { color: var(--primary-strong); }
+:where(html[data-theme="light"]) :is(button, a):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:where(html[data-theme="light"]) .topbar { background: #eeeae3ed; border-color: var(--line); backdrop-filter: blur(14px); }
+:where(html[data-theme="light"]) .brand { color: var(--text); }
+:where(html[data-theme="light"]) .nav > a { color: var(--muted); }
+:where(html[data-theme="light"]) .nav > a:hover { color: var(--text); background: var(--surface-2); }
+:where(html[data-theme="light"]) .nav a.router-link-active { color: var(--text); background: #dedacd70; border-bottom-color: var(--accent); }
+:where(html[data-theme="light"]) .account-trigger { color: var(--text); }
+:where(html[data-theme="light"]) .account-trigger:hover,
+:where(html[data-theme="light"]) .account-trigger[aria-expanded="true"] { border-color: var(--line); background: var(--surface-3); }
+:where(html[data-theme="light"]) .account-dropdown { background: var(--surface); border-color: var(--line); box-shadow: 0 18px 38px rgba(61,58,43,.16); }
+:where(html[data-theme="light"]) .account-dropdown-item { color: var(--text) !important; }
+:where(html[data-theme="light"]) .account-dropdown-item:hover,
+:where(html[data-theme="light"]) .account-dropdown-item:focus-visible { background: var(--hover-bg); color: var(--primary-strong) !important; }
+:where(html[data-theme="light"]) .account-dropdown-divider { background: var(--line); }
+:where(html[data-theme="light"]) .account-dropdown-logout { color: var(--danger) !important; }
+:where(html[data-theme="light"]) .account-dropdown-logout:hover,
+:where(html[data-theme="light"]) .account-dropdown-logout:focus-visible { background: var(--danger-soft); color: var(--danger) !important; }
+:where(html[data-theme="light"]) .link-button { color: var(--muted); }
+:where(html[data-theme="light"]) :is(.card, .jisu-entry-card, .jisu-news-panel, .jisu-list-panel) { box-shadow: var(--card-shadow); }
+:where(html[data-theme="light"]) :is(input, select, textarea) { color: var(--text); background: var(--field-bg); border-color: var(--line-strong); accent-color: var(--primary-strong); }
+:where(html[data-theme="light"]) :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
+:where(html[data-theme="light"]) :is(input, select, textarea):focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(162,118,54,.14); }
+:where(html[data-theme="light"]) .field label { color: var(--text); }
+:where(html[data-theme="light"]) .button { color: var(--on-primary); background: var(--primary-strong); border-color: var(--primary-strong); }
+:where(html[data-theme="light"]) .button:hover:not(:disabled) { background: #566247; border-color: #566247; color: var(--on-primary); }
+:where(html[data-theme="light"]) .button.secondary { color: var(--primary-strong); background: var(--surface-2); border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .button.secondary:hover:not(:disabled) { color: var(--primary-strong); background: var(--hover-bg); border-color: var(--primary); }
+:where(html[data-theme="light"]) .button.danger { background: var(--danger); border-color: var(--danger); }
+:where(html[data-theme="light"]) .button.danger:hover:not(:disabled) { background: #853b31; border-color: #853b31; }
+:where(html[data-theme="light"]) th { color: var(--primary-strong); background: var(--surface-3); }
+:where(html[data-theme="light"]) td { color: var(--text); }
+:where(html[data-theme="light"]) td.success { color: var(--success); }
+:where(html[data-theme="light"]) tbody tr:hover { background: var(--surface-2); }
+:where(html[data-theme="light"]) .error { color: var(--danger); background: var(--danger-soft); border-color: #d4aaa0; }
+:where(html[data-theme="light"]) .tag { color: var(--primary-strong); background: var(--surface-2); border-color: var(--line); }
+:where(html[data-theme="light"]) .tabs button.active { color: var(--primary-strong); border-bottom-color: var(--accent); }
+:where(html[data-theme="light"]) .prose pre,
+:where(html[data-theme="light"]) pre.sample { color: var(--text); background: var(--surface-2); border-color: var(--line); }
+:where(html[data-theme="light"]) .source-choice label:has(input:checked) { background: var(--hover-bg); border-color: var(--primary); }
+:where(html[data-theme="light"]) .stepper button.step.done { border-color: var(--success); }
+
+/* Quiet olive/gold decoration shared by the home, profile and dashboard. */
+:where(html[data-theme="light"]) :is(.account-avatar, .profile-avatar-fallback, .administrator-avatar, .problem-accepted-avatar) { color: var(--on-primary); background: linear-gradient(135deg, #59634c, #878366); }
+:where(html[data-theme="light"]) :is(.jisu-entry-icon, .admin-dashboard-icon) { color: var(--primary-strong); background: var(--hover-bg); }
+:where(html[data-theme="light"]) :is(.jisu-eyebrow, .jisu-section-kicker, .profile-kicker, .admin-kicker, .todo-kicker) { color: var(--accent-text); }
+:where(html[data-theme="light"]) :is(.hero, .jisu-bottom-banner, .profile-overview, .admin-dashboard-intro) { color: var(--text); background: var(--panel-gradient); border-color: var(--line); }
+:where(html[data-theme="light"]) :is(.hero p, .jisu-description, .jisu-hero-note, .profile-overview p, .admin-dashboard-intro p) { color: var(--muted); }
+:where(html[data-theme="light"]) :is(.profile-overview h2, .admin-dashboard-intro h2) { color: var(--text); }
+:where(html[data-theme="light"]) :is(.account-caret, .jisu-entry-arrow, .jisu-list-arrow, .admin-dashboard-card b) { color: var(--muted); }
+:where(html[data-theme="light"]) .jisu-hero { color: var(--text); background: radial-gradient(ellipse at 85% 18%, #c5c9b266, transparent 48%), linear-gradient(120deg, #f6f3ec, #e7e5d9 58%, #d8ddce); border-color: var(--line); box-shadow: var(--card-shadow); }
+:where(html[data-theme="light"]) .jisu-hero::after { border-color: #9b957d3b; box-shadow: 0 0 0 34px #a49d7c09, 0 0 0 68px #a49d7c09; }
+:where(html[data-theme="light"]) .jisu-hero-particle { background: #8e927c21; border-color: #7e826c17; box-shadow: 0 0 10px #99977812; }
+:where(html[data-theme="light"]) .jisu-hero h1 { color: var(--primary-strong); }
+:where(html[data-theme="light"]) .jisu-subtitle { color: var(--text); }
+:where(html[data-theme="light"]) .jisu-primary-action { color: var(--on-primary) !important; background: var(--primary-strong); border-color: var(--primary-strong); }
+:where(html[data-theme="light"]) .jisu-primary-action:hover,
+:where(html[data-theme="light"]) .jisu-primary-action:focus { color: var(--on-primary) !important; background: #566247; border-color: #566247; }
+:where(html[data-theme="light"]) .jisu-secondary-action { color: var(--primary-strong) !important; border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .jisu-secondary-action:hover,
+:where(html[data-theme="light"]) .jisu-secondary-action:focus { color: var(--primary-strong) !important; background: var(--hover-bg); border-color: var(--primary); }
+:where(html[data-theme="light"]) .jisu-hero button.jisu-secondary-action:hover { background: var(--hover-bg); }
+:where(html[data-theme="light"]) .jisu-hero-note i { color: var(--accent-text); }
+:where(html[data-theme="light"]) .jisu-emblem { border-color: #a4a68b80; box-shadow: inset 0 0 0 16px #a2a3880a, 0 0 0 22px #a2a3880a; }
+:where(html[data-theme="light"]) .jisu-hero-index { color: var(--muted); }
+:where(html[data-theme="light"]) .jisu-entry-card:hover,
+:where(html[data-theme="light"]) .jisu-entry-card:focus { border-color: var(--accent); box-shadow: 0 12px 26px rgba(61,58,43,.1); }
+
+/* Dialogs, including the QR dialog teleported outside the application shell. */
+:where(html[data-theme="light"]) :is(.jisu-group-overlay, .accepted-message-overlay, .admin-menu-backdrop) { background: rgba(48,53,47,.34); }
+:where(html[data-theme="light"]) :is(.jisu-group-dialog, .accepted-message-dialog) { color: var(--text); background: var(--surface); border-color: var(--line-strong); box-shadow: 0 28px 86px rgba(48,53,47,.24); }
+:where(html[data-theme="light"]) :is(.jisu-group-dialog, .accepted-message-dialog) > header h2 { color: var(--text); }
+:where(html[data-theme="light"]) :is(.jisu-group-dialog, .accepted-message-dialog) > header button,
+:where(html[data-theme="light"]) .problem-accepted-close { color: var(--primary-strong); background: var(--surface-2); border-color: var(--line-strong); }
+:where(html[data-theme="light"]) :is(.jisu-group-dialog, .accepted-message-dialog) > header button:hover,
+:where(html[data-theme="light"]) .problem-accepted-close:hover { background: var(--hover-bg); border-color: var(--primary); }
+:where(html[data-theme="light"]) .jisu-group-qrs article { background: var(--surface-2); border-color: var(--line); }
+:where(html[data-theme="light"]) .jisu-group-qrs img { box-shadow: var(--card-shadow); }
+:where(html[data-theme="light"]) .jisu-group-qrs strong { color: var(--text); }
+:where(html[data-theme="light"]) .jisu-group-qrs small { color: var(--muted); }
+
+/* Problem editor, accepted users, and message states. */
+:where(html[data-theme="light"]) .accepted-toggle.active { color: var(--success); background: var(--success-soft); border-color: var(--success); }
+:where(html[data-theme="light"]) .accepted-toggle b { background: #6c775c1a; }
+:where(html[data-theme="light"]) .problem-accepted-panel { border-color: var(--line); background: linear-gradient(180deg, var(--surface-2), var(--surface) 30%); }
+:where(html[data-theme="light"]) .problem-accepted-kicker { color: var(--success); }
+:where(html[data-theme="light"]) .problem-accepted-user { border-color: var(--line); }
+:where(html[data-theme="light"]) .problem-accepted-user:hover { background: var(--surface-2); }
+:where(html[data-theme="light"]) .problem-accepted-avatar { border-color: var(--line-strong); }
+:where(html[data-theme="light"]) :is(.problem-accepted-rank, .problem-accepted-identity small, .problem-accepted-identity em, .problem-accepted-user time) { color: var(--muted); }
+:where(html[data-theme="light"]) :is(.problem-accepted-identity strong, .problem-accepted-state strong, .accepted-message-form > label, .accepted-message-login p) { color: var(--text); }
+:where(html[data-theme="light"]) .problem-accepted-message { color: var(--primary-strong); background: var(--surface-2); border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .problem-accepted-message:hover { color: var(--primary-strong); background: var(--hover-bg); border-color: var(--primary); }
+:where(html[data-theme="light"]) .accepted-message-context { background: var(--surface-2); border-color: var(--accent); }
+:where(html[data-theme="light"]) :is(.accepted-message-context > span, .accepted-message-context > small, .accepted-message-actions > small) { color: var(--muted); }
+:where(html[data-theme="light"]) .accepted-message-context > a { color: var(--primary-strong); }
+:where(html[data-theme="light"]) .accepted-message-success > span { color: var(--success); background: var(--success-soft); border-color: var(--success); }
+:where(html[data-theme="light"]) .accepted-message-success > strong { color: var(--success); }
+
+/* Personal dashboard and profile charts. */
+:where(html[data-theme="light"]) :is(.todo-problem, .todo-contest) { background: var(--surface-2); border-color: var(--line); }
+:where(html[data-theme="light"]) :is(.todo-problem, .todo-contest):hover { background: var(--hover-bg); border-color: var(--line-strong); }
+:where(html[data-theme="light"]) :is(.todo-problem-id, .todo-contest > span:last-child) { color: var(--accent-text); }
+:where(html[data-theme="light"]) :is(.todo-problem-stats, .todo-contest small) { color: var(--muted); }
+:where(html[data-theme="light"]) .todo-contest-status { background: var(--success-soft); color: var(--success); }
+:where(html[data-theme="light"]) .profile-avatar { border-color: var(--line); box-shadow: var(--card-shadow); }
+:where(html[data-theme="light"]) :is(.profile-progress, .result-bar) { background: var(--surface-3); }
+:where(html[data-theme="light"]) .profile-progress i { background: linear-gradient(90deg, #a27636, #7b8962); }
+:where(html[data-theme="light"]) .profile-coins { background: var(--warning-soft); border-color: #c7b790; }
+:where(html[data-theme="light"]) .profile-coins strong { color: var(--warning); }
+:where(html[data-theme="light"]) .submission-day i { background: #a29573; }
+:where(html[data-theme="light"]) .submission-day i.has-ac { background: linear-gradient(180deg, #8b9b77, #5a6748); }
+:where(html[data-theme="light"]) .result-pill.accepted { color: var(--success); background: var(--success-soft); }
+:where(html[data-theme="light"]) .result-pill.rejected { color: var(--danger); background: var(--danger-soft); }
+:where(html[data-theme="light"]) .result-pill.compile { color: var(--purple); background: var(--purple-soft); }
+:where(html[data-theme="light"]) .result-bar i.accepted { background: #73845c; }
+:where(html[data-theme="light"]) .result-bar i.rejected { background: #ac6b5f; }
+:where(html[data-theme="light"]) .result-bar i.compile { background: #92749b; }
+:where(html[data-theme="light"]) .profile-problem-label { color: var(--primary-strong) !important; border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .profile-problem-label.accepted { color: var(--success) !important; background: var(--success-soft); border-color: #96aa88; }
+:where(html[data-theme="light"]) .profile-problem-label.attempted { color: var(--danger) !important; background: var(--danger-soft); border-color: #c8a298; }
+
+/* Administration and Other use the same paper surfaces as public pages. */
+:where(html[data-theme="light"]) :is(.admin-sidebar, .other-sidebar) { background: linear-gradient(180deg, var(--surface), var(--surface-2)); border-color: var(--line); box-shadow: var(--card-shadow); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-brand, .admin-sidebar-top, .admin-sidebar-links, .other-sidebar-title) { border-color: var(--line); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-mark, .other-sidebar-title > span) { background: var(--primary-strong); color: var(--on-primary); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-brand strong, .other-sidebar-title strong) { color: var(--text); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-brand small, .other-sidebar-title small, .admin-menu-group h3, .other-sidebar nav h2) { color: var(--muted); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-home, .admin-menu-group a, .admin-sidebar-links a) { color: var(--primary-strong) !important; }
+:where(html[data-theme="light"]) :is(.admin-sidebar-home span, .admin-menu-group a span, .admin-menu-group h3 span, .other-sidebar nav a span) { color: var(--accent-text); }
+:where(html[data-theme="light"]) :is(.admin-sidebar-home:hover, .admin-sidebar-home.active, .admin-menu-group a:hover, .admin-menu-group a.active) { background: var(--hover-bg); color: var(--text) !important; }
+:where(html[data-theme="light"]) .admin-menu-group a.active { box-shadow: inset 3px 0 0 var(--accent); }
+:where(html[data-theme="light"]) .admin-sidebar-links a { color: var(--muted) !important; }
+:where(html[data-theme="light"]) .admin-sidebar-links a:hover { color: var(--primary-strong) !important; }
+:where(html[data-theme="light"]) .admin-current-user { color: var(--primary-strong) !important; border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .admin-dashboard-card:hover { border-color: var(--accent); }
+:where(html[data-theme="light"]) :is(.admin-menu-toggle, .other-menu-toggle) { background: var(--surface-2); color: var(--primary-strong); border-color: var(--line-strong); }
+:where(html[data-theme="light"]) .other-sidebar nav a { color: var(--primary-strong); }
+:where(html[data-theme="light"]) :is(.other-sidebar nav a:hover, .other-sidebar nav a.active) { color: var(--text); background: var(--hover-bg); box-shadow: inset 3px 0 0 var(--accent); }
+:where(html[data-theme="light"]) .administrator-count { color: var(--muted); background: var(--surface-2); }
+:where(html[data-theme="light"]) .administrator-level.super { color: var(--warning); background: var(--warning-soft); border-color: #c7b790; }
+:where(html[data-theme="light"]) .administrator-level.regular { color: var(--success); background: var(--success-soft); border-color: #96aa88; }
+:where(html[data-theme="light"]) .administrator-card dd { color: var(--text); }
+
+/* Import workflow and configuration notices retain distinct semantic colors. */
+:where(html[data-theme="light"]) .agent-status.configured { color: var(--success); background: var(--success-soft); border-color: #96aa88; }
+:where(html[data-theme="light"]) .agent-status.configured::before { background: var(--success); box-shadow: 0 0 6px #73845c33; }
+:where(html[data-theme="light"]) .agent-status.missing { color: var(--warning); background: var(--warning-soft); border-color: #c7b790; }
+:where(html[data-theme="light"]) .agent-status.missing::before { background: var(--warning); }
+:where(html[data-theme="light"]) :is(.agent-config-lifetime, .import-handoff-note, .import-confirm) { color: var(--text); background: var(--surface-2); border-color: var(--line); }
+:where(html[data-theme="light"]) :is(.agent-config-lifetime strong, .agent-current-config strong) { color: var(--primary-strong); }
+:where(html[data-theme="light"]) :is(.agent-config-readonly, .import-data-warning) { color: var(--warning); background: var(--warning-soft); border-color: #c7b790; }
+:where(html[data-theme="light"]) .agent-config-readonly strong { color: var(--warning); }
+:where(html[data-theme="light"]) .import-success > span { color: var(--success); border-color: var(--success); }

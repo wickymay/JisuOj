@@ -1,0 +1,105 @@
+name: jisuoj-next
+
+services:
+  db:
+    image: docker.m.daocloud.io/library/mysql:8.4
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: jol
+      MYSQL_USER: ${DB_USERNAME:-jisuoj}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ../trunk/install/db.sql:/docker-entrypoint-initdb.d/01-hustoj-schema.sql:ro
+    ports:
+      - "${DB_EXPOSE_PORT:-3307}:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:mysql://db:3306/jol?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+      DB_USERNAME: ${DB_USERNAME:-jisuoj}
+      DB_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      AUTH_SECRET: ${AUTH_SECRET:?set AUTH_SECRET in .env}
+      AI_CONFIG_SECRET: ${AI_CONFIG_SECRET:?set AI_CONFIG_SECRET in .env}
+      AUTH_SECURE_COOKIE: ${AUTH_SECURE_COOKIE:-false}
+      JUDGE_DATA_DIR: /home/judge/data
+      JUDGE_HOST: judge-agent
+      JUDGE_NOTIFY_ENABLED: ${JUDGE_NOTIFY_ENABLED:-false}
+      AI_RAG_ENABLED: ${AI_RAG_ENABLED:-false}
+      AI_TEACHING_SKILLS_ENABLED: ${AI_TEACHING_SKILLS_ENABLED:-true}
+      AI_RAG_BASE_URL: ${AI_RAG_BASE_URL:-http://rag:8765}
+      AI_RAG_TOKEN: ${AI_RAG_TOKEN:-}
+      AI_RAG_TOP_K: ${AI_RAG_TOP_K:-3}
+      AI_RAG_MIN_SCORE: ${AI_RAG_MIN_SCORE:-0.45}
+      TZ: Asia/Shanghai
+    volumes:
+      - judge-data:/home/judge/data
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${WEB_PORT:-8088}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  rag:
+    profiles: ["rag"]
+    build: ./rag
+    environment:
+      RAG_BIND_HOST: 0.0.0.0
+      RAG_INDEX_DIR: /data/index
+      RAG_MODEL_DIR: /data/model
+      RAG_DEVICE: cpu
+      RAG_SERVICE_TOKEN: ${AI_RAG_TOKEN:-}
+    volumes:
+      - ./output/RAG资料集/向量化/qwen3-embedding-0.6b-v1:/data/index:ro
+      - ${RAG_MODEL_HOST_DIR:-./models/Qwen3-Embedding-0.6B}:/data/model:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health', timeout=2)"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 90s
+
+  judge-agent:
+    profiles: ["judge"]
+    build:
+      context: ..
+      dockerfile: jisuoj-next/judge-agent/Dockerfile
+    privileged: true
+    security_opt:
+      - seccomp=unconfined
+    environment:
+      DB_HOST: db
+      DB_NAME: jol
+      DB_USERNAME: ${DB_USERNAME:-jisuoj}
+      DB_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      JUDGE_WORKERS: ${JUDGE_WORKERS:-2}
+      TZ: Asia/Shanghai
+    volumes:
+      - judge-data:/home/judge/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
+  judge-data:

@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "id": "competitive-programming-tutor",
+  "version": "1.0.0",
+  "title": "算法竞赛 AI 教学",
+  "generatedAt": "2026-10-18",
+  "sourceBooks": 9,
+  "sourcePdfPages": 3570,
+  "coreFile": "SKILL.md",
+  "topics": [
+    {
+      "id": "modeling",
+      "title": "建模与复杂度",
+      "file": "chapters/ch01-modeling.md",
+      "keywords": [
+        "建模",
+        "复杂度",
+        "数据范围",
+        "时间限制",
+        "状态设计",
+        "怎么入手",
+        "如何入手"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B07",
+          "pdfPage": 168
+        },
+        {
+          "bookId": "B08",
+          "pdfPage": 86
+        }
+      ]
+    },
+    {
+      "id": "foundations",
+      "title": "语言与实现基础",
+      "file": "chapters/ch02-foundations.md",
+      "keywords": [
+        "数组",
+        "循环",
+        "递归",
+        "函数",
+        "指针",
+        "输入输出",
+        "STL",
+        "vector",
+        "溢出",
+        "下标"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B01",
+          "pdfPage": 249
+        },
+        {
+          "bookId": "B02",
+          "pdfPage": 173
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "title": "搜索与回溯",
+      "file": "chapters/ch03-search.md",
+      "keywords": [
+        "搜索",
+        "回溯",
+        "剪枝",
+        "BFS",
+        "DFS",
+        "广度优先",
+        "深度优先",
+        "迷宫",
+        "枚举",
+        "去重"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B04",
+          "pdfPage": 41
+        }
+      ]
+    },
+    {
+      "id": "greedy-binary",
+      "title": "贪心、二分与分治",
+      "file": "chapters/ch04-greedy-binary.md",
+      "keywords": [
+        "贪心",
+        "二分",
+        "分治",
+        "单调性",
+        "lower_bound",
+        "upper_bound",
+        "交换论证",
+        "区间调度"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B01",
+          "pdfPage": 249
+        },
+        {
+          "bookId": "B05",
+          "pdfPage": 137
+        }
+      ]
+    },
+    {
+      "id": "dp",
+      "title": "动态规划",
+      "file": "chapters/ch05-dp.md",
+      "keywords": [
+        "动态规划",
+        "DP",
+        "背包",
+        "状态转移",
+        "滚动数组",
+        "记忆化",
+        "最优子结构",
+        "子序列",
+        "一维压缩"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B02",
+          "pdfPage": 341
+        }
+      ]
+    },
+    {
+      "id": "graphs",
+      "title": "图论与路径",
+      "file": "chapters/ch06-graphs.md",
+      "keywords": [
+        "图论",
+        "最短路",
+        "Dijkstra",
+        "Bellman",
+        "SPFA",
+        "负权",
+        "负环",
+        "拓扑",
+        "生成树",
+        "网络流",
+        "松弛"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B01",
+          "pdfPage": 380
+        },
+        {
+          "bookId": "B08",
+          "pdfPage": 86
+        }
+      ]
+    },
+    {
+      "id": "structures",
+      "title": "数据结构与集合关系",
+      "file": "chapters/ch07-structures.md",
+      "keywords": [
+        "并查集",
+        "路径压缩",
+        "树状数组",
+        "线段树",
+        "前缀和",
+        "堆",
+        "队列",
+        "栈",
+        "集合合并",
+        "连通性"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B02",
+          "pdfPage": 173
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "字符串与匹配状态",
+      "file": "chapters/ch08-strings.md",
+      "keywords": [
+        "字符串",
+        "KMP",
+        "前缀函数",
+        "模式匹配",
+        "模式串",
+        "回文",
+        "Trie",
+        "AC自动机",
+        "后缀",
+        "重叠匹配"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B03",
+          "pdfPage": 202
+        }
+      ]
+    },
+    {
+      "id": "math",
+      "title": "数学、计数与模运算",
+      "file": "chapters/ch09-math.md",
+      "keywords": [
+        "数学",
+        "计数",
+        "组合数",
+        "欧几里得",
+        "gcd",
+        "公约数",
+        "快速幂",
+        "取模",
+        "模运算",
+        "逆元",
+        "质数",
+        "筛法"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B06",
+          "pdfPage": 20
+        }
+      ]
+    },
+    {
+      "id": "geometry",
+      "title": "几何与精度",
+      "file": "chapters/ch10-geometry.md",
+      "keywords": [
+        "几何",
+        "叉积",
+        "点积",
+        "凸包",
+        "精度",
+        "浮点",
+        "共线",
+        "线段相交",
+        "向量",
+        "epsilon"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B06",
+          "pdfPage": 125
+        },
+        {
+          "bookId": "B07",
+          "pdfPage": 168
+        }
+      ]
+    },
+    {
+      "id": "debugging",
+      "title": "调试与验证",
+      "file": "chapters/ch11-debugging.md",
+      "keywords": [
+        "调试",
+        "报错",
+        "错误",
+        "错了",
+        "不对",
+        "过不了",
+        "超时",
+        "WA",
+        "RE",
+        "TLE",
+        "CE",
+        "崩溃",
+        "越界",
+        "反例",
+        "测试",
+        "对拍",
+        "初始化"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B07",
+          "pdfPage": 168
+        }
+      ]
+    },
+    {
+      "id": "training",
+      "title": "学习路线、提示与复盘",
+      "file": "chapters/ch12-training.md",
+      "keywords": [
+        "学习",
+        "训练",
+        "计划",
+        "复盘",
+        "入门",
+        "提示",
+        "思路",
+        "不会",
+        "练习",
+        "怎么学",
+        "不要代码"
+      ],
+      "sourceRefs": [
+        {
+          "bookId": "B09",
+          "pdfPage": 16
+        }
+      ]
+    }
+  ],
+  "contentHashes": {
+    "chapters/ch01-modeling.md": "aad8af68d59d58356cf319568718b571ce088434c5f4b1d1792f3f568a2d38ed",
+    "chapters/ch02-foundations.md": "2c95372300d20390cfa44e19a514209776fbf84f04149bead3c607ca4573b3be",
+    "chapters/ch03-search.md": "10cbde87a79dc66a3cee5f2e0eee5ed25bc5cb58a777cb78addf2b90bae74e6f",
+    "chapters/ch04-greedy-binary.md": "6a92e6a3be401d5c1da2b494817ccb8cb99c08157b3bf4a392b7e222acf298f9",
+    "chapters/ch05-dp.md": "14d52593ec78712dcc2b81cc45319f8c014cc7de10edf927b4bddfd023ca3fae",
+    "chapters/ch06-graphs.md": "840864ed2324faeeb30998d8d72d8d93213852183e05ef70d5f5e18a94ed7ae9",
+    "chapters/ch07-structures.md": "270828f4af804ec80d8c48c770c1d6bcbeed2f4fd35bc1510f455dd0ee26dedb",
+    "chapters/ch08-strings.md": "924831e1e1f97742e93dc32df3d388e5e50491fe256a7cef59fbf2940e7db027",
+    "chapters/ch09-math.md": "8acfaa0ffb1f913d6346b2e0112bed2346902c9f97b38b80d123bd3540dfc60a",
+    "chapters/ch10-geometry.md": "b42453bbd06d11816a3ad240a5583363ea2cf47d46130a80e06ac19d005a22de",
+    "chapters/ch11-debugging.md": "4683325c9483402804c2fecf8c29c07058aabf387a424514ab40d18ed68ab56c",
+    "chapters/ch12-training.md": "80f55440fdd2d5e083941ee6a8bf81d369b4430f8d91ee72cd2899b08545313a",
+    "cheatsheet.md": "31473625b0ef511e239cb0a908f36cc540baf1addee03fed2dd99d426157ff26",
+    "examples/verified_algorithms.hpp": "0d673fba8047161b7b1ebb05c374fb091f4fc7ae7bbbd23b68e79f49e28811e5",
+    "glossary.md": "502356be47ccf35ff71e16f9923490238ecd9a8bdd5c72ab6154075bcb1da215",
+    "patterns.md": "b898b48120337dab939935702755fbf20c36411e72187b5d40ad3d27628dff0f",
+    "SKILL.md": "880bcb3426651684b36035cab1364018aece728c7d652f953257e53f245d827c",
+    "sources.json": "a8f446e05c6d2518ded577dc0d8c97aec487ac294b546508d67363e5a04ed51d"
+  }
+}

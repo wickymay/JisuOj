@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: jisuoj-backend
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/jol?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USERNAME:jisuoj}
+    password: ${DB_PASSWORD:jisuoj-dev}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:12}
+      minimum-idle: 2
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 64MB
+      max-request-size: 66MB
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+  error:
+    include-message: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+jisuoj:
+  data-dir: ${JUDGE_DATA_DIR:/home/judge/data}
+  ai:
+    config-encryption-secret: ${AI_CONFIG_SECRET:change-this-development-ai-config-secret-before-production}
+    teaching-hourly-limit: ${AI_TEACHING_HOURLY_LIMIT:30}
+    teaching-skills:
+      enabled: ${AI_TEACHING_SKILLS_ENABLED:true}
+    rag:
+      enabled: ${AI_RAG_ENABLED:true}
+      base-url: ${AI_RAG_BASE_URL:http://127.0.0.1:8765}
+      token: ${AI_RAG_TOKEN:}
+      top-k: ${AI_RAG_TOP_K:3}
+      min-score: ${AI_RAG_MIN_SCORE:0.45}
+      timeout: ${AI_RAG_TIMEOUT:12s}
+  auth:
+    secret: ${AUTH_SECRET:change-this-development-secret-before-production-please}
+    token-ttl: ${AUTH_TOKEN_TTL:8h}
+    secure-cookie: ${AUTH_SECURE_COOKIE:false}
+  judge:
+    notification-enabled: ${JUDGE_NOTIFY_ENABLED:true}
+    host: ${JUDGE_HOST:judge-agent}
+    port: ${JUDGE_PORT:1536}
+    payload: ${JUDGE_NOTIFY_PAYLOAD:../judge}
+    submission-cooldown-seconds: ${SUBMISSION_COOLDOWN_SECONDS:5}
+logging:
+  level:
+    com.jisuoj: ${JISUOJ_LOG_LEVEL:INFO}

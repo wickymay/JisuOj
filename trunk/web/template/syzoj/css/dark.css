@@ -1,0 +1,837 @@
+html[data-theme="dark"] {
+  --ui-bg: #0b1220;
+  --ui-surface: #111c2e;
+  --ui-surface-muted: #17243a;
+  --ui-border: #273a57;
+  --ui-border-strong: #3a5275;
+  --ui-text: #e6edf7;
+  --ui-muted: #9aabc2;
+  --ui-primary: #60a5fa;
+  --ui-primary-hover: #93c5fd;
+  --ui-navy: #0f1b31;
+  --ui-success: #34d399;
+  --ui-danger: #fb7185;
+  --ui-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--ui-bg) !important;
+  background-image: linear-gradient(rgba(11, 18, 32, 0.9), rgba(11, 18, 32, 0.9)) !important;
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] ::selection {
+  background: rgba(96, 165, 250, 0.3);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] a {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] a:hover,
+html[data-theme="dark"] a:focus {
+  color: var(--ui-primary-hover);
+}
+
+html[data-theme="dark"] a.black-link {
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] a.black-link:hover {
+  color: var(--ui-primary-hover);
+}
+
+html[data-theme="dark"] #page-header.ui.menu {
+  background: var(--ui-navy) !important;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] #page-header .item,
+html[data-theme="dark"] #page-header .header.item,
+html[data-theme="dark"] #page-header .item > i.icon {
+  color: #d9e5f5;
+}
+
+html[data-theme="dark"] #page-header .item:hover,
+html[data-theme="dark"] #page-header .item:focus,
+html[data-theme="dark"] #page-header .item.active {
+  background: rgba(148, 184, 232, 0.14) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] #page-header .header.item span {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] #page-header .user-menu-link {
+  color: inherit;
+}
+
+html[data-theme="dark"] #page-header .ui.dropdown > .menu,
+html[data-theme="dark"] .ui.dropdown .menu,
+html[data-theme="dark"] .dropdown-menu {
+  background: var(--ui-surface) !important;
+  border-color: var(--ui-border) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.42);
+}
+
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .item,
+html[data-theme="dark"] .ui.dropdown .menu > .item,
+html[data-theme="dark"] .dropdown-menu > li > a {
+  background: var(--ui-surface) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .item > i.icon,
+html[data-theme="dark"] .ui.dropdown .menu > .item > i.icon {
+  color: var(--ui-muted) !important;
+}
+
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .item:hover,
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .item:focus,
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .item.active,
+html[data-theme="dark"] #page-header .ui.dropdown > .menu > .selected.item,
+html[data-theme="dark"] .ui.dropdown .menu > .item:hover,
+html[data-theme="dark"] .ui.dropdown .menu > .item:focus,
+html[data-theme="dark"] .ui.dropdown .menu > .item.active,
+html[data-theme="dark"] .ui.dropdown .menu > .selected.item,
+html[data-theme="dark"] .dropdown-menu > li > a:hover,
+html[data-theme="dark"] .dropdown-menu > li > a:focus {
+  background: #1b3151 !important;
+  color: var(--ui-primary-hover) !important;
+}
+
+html[data-theme="dark"] #page-header .theme-submenu-toggle > .icon:first-child {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] #page-header .theme-submenu-arrow {
+  color: #7185a1;
+}
+
+html[data-theme="dark"] #page-header .theme-submenu-menu {
+  background: var(--ui-surface) !important;
+  border-color: var(--ui-border);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.42);
+}
+
+html[data-theme="dark"] #page-header .theme-option {
+  background: transparent;
+  border-color: transparent;
+  color: #c2d0e3;
+}
+
+html[data-theme="dark"] #page-header .theme-option .icon {
+  color: var(--ui-muted);
+}
+
+html[data-theme="dark"] #page-header .theme-option:hover,
+html[data-theme="dark"] #page-header .theme-option:focus {
+  background: #1b3151;
+  color: #dbeafe;
+}
+
+html[data-theme="dark"] #page-header .theme-option:hover .icon,
+html[data-theme="dark"] #page-header .theme-option:focus .icon {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] #page-header .theme-option.active {
+  background: #1b3151;
+  color: #dbeafe;
+  font-weight: 700;
+}
+
+html[data-theme="dark"] #page-header .theme-option.active::after {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .ui.header,
+html[data-theme="dark"] .ui.sub.header {
+  color: #f1f5fb;
+}
+
+html[data-theme="dark"] .ui.top.attached.block.header {
+  background: var(--ui-surface-muted);
+  border-color: var(--ui-border);
+  color: #dbe7f5;
+}
+
+html[data-theme="dark"] .ui.top.attached.block.header i.icon {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] .ui.menu:not(#page-header),
+html[data-theme="dark"] .ui.segment,
+html[data-theme="dark"] .ui.card,
+html[data-theme="dark"] .ui.message,
+html[data-theme="dark"] .ui.segments,
+html[data-theme="dark"] .ui.popup,
+html[data-theme="dark"] .ui.modal > .header,
+html[data-theme="dark"] .ui.modal > .content,
+html[data-theme="dark"] .ui.modal > .actions {
+  background-color: var(--ui-surface);
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.segment,
+html[data-theme="dark"] .ui.card,
+html[data-theme="dark"] .ui.message,
+html[data-theme="dark"] .ui.segments {
+  box-shadow: var(--ui-shadow);
+}
+
+html[data-theme="dark"] .ui.card > .content,
+html[data-theme="dark"] .ui.card > .extra,
+html[data-theme="dark"] .ui.segments > .segment {
+  border-color: var(--ui-border) !important;
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.table,
+html[data-theme="dark"] .table {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.table thead th,
+html[data-theme="dark"] .ui.table tfoot th {
+  background: var(--ui-surface-muted);
+  border-color: var(--ui-border);
+  color: #b8c8dc;
+}
+
+html[data-theme="dark"] .ui.table td,
+html[data-theme="dark"] .ui.table th,
+html[data-theme="dark"] .table > thead > tr > th,
+html[data-theme="dark"] .table > tbody > tr > td,
+html[data-theme="dark"] .table > tfoot > tr > td {
+  border-color: var(--ui-border);
+}
+
+html[data-theme="dark"] .ui.table tbody tr:hover td,
+html[data-theme="dark"] .ui.table tbody tr.active td,
+html[data-theme="dark"] .table-hover > tbody > tr:hover,
+html[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
+  background: #182a45 !important;
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.striped.table tbody tr:nth-child(2n) {
+  background: #142239;
+}
+
+html[data-theme="dark"] .ui.list .item,
+html[data-theme="dark"] .ui.list .item a,
+html[data-theme="dark"] .ui.breadcrumb .section,
+html[data-theme="dark"] .ui.statistic > .label,
+html[data-theme="dark"] .meta,
+html[data-theme="dark"] .description {
+  color: var(--ui-muted);
+}
+
+html[data-theme="dark"] .ui.button {
+  background: #1a2a43;
+  border-color: var(--ui-border-strong);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.button:hover,
+html[data-theme="dark"] .ui.button:focus {
+  background: #25405f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+}
+
+html[data-theme="dark"] .ui.primary.button,
+html[data-theme="dark"] .ui.blue.button {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .ui.primary.button:hover,
+html[data-theme="dark"] .ui.primary.button:focus,
+html[data-theme="dark"] .ui.blue.button:hover,
+html[data-theme="dark"] .ui.blue.button:focus {
+  background: #60a5fa;
+  color: #08111f;
+}
+
+html[data-theme="dark"] .ui.green.button,
+html[data-theme="dark"] .ui.positive.button {
+  background: #059669;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .ui.red.button,
+html[data-theme="dark"] .ui.negative.button {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .ui.basic.button {
+  background: #182942;
+  border-color: var(--ui-border-strong);
+  color: #cbd5e1;
+}
+
+html[data-theme="dark"] .ui.basic.button:hover,
+html[data-theme="dark"] .ui.basic.button:focus {
+  background: #1b3151;
+  border-color: #5a86bb;
+  color: #f1f5f9;
+}
+
+html[data-theme="dark"] .problem-editor-admin-links a.ui.basic.button {
+  background: var(--ui-surface-muted) !important;
+  border-color: var(--ui-border-strong) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .problem-editor-admin-links a.ui.basic.button:hover,
+html[data-theme="dark"] .problem-editor-admin-links a.ui.basic.button:focus {
+  background: var(--ui-primary) !important;
+  border-color: var(--ui-primary) !important;
+  color: #08111f !important;
+}
+
+html[data-theme="dark"] .profile-edit-button.ui.button {
+  color: #e6edf7 !important;
+}
+
+html[data-theme="dark"] .profile-edit-button.ui.button:hover,
+html[data-theme="dark"] .profile-edit-button.ui.button:focus {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .ui.input > input,
+html[data-theme="dark"] .ui.form input:not([type]),
+html[data-theme="dark"] .ui.form input[type="date"],
+html[data-theme="dark"] .ui.form input[type="datetime-local"],
+html[data-theme="dark"] .ui.form input[type="email"],
+html[data-theme="dark"] .ui.form input[type="file"],
+html[data-theme="dark"] .ui.form input[type="number"],
+html[data-theme="dark"] .ui.form input[type="password"],
+html[data-theme="dark"] .ui.form input[type="search"],
+html[data-theme="dark"] .ui.form input[type="tel"],
+html[data-theme="dark"] .ui.form input[type="text"],
+html[data-theme="dark"] .ui.form input[type="time"],
+html[data-theme="dark"] .ui.form input[type="url"],
+html[data-theme="dark"] .ui.form textarea,
+html[data-theme="dark"] .ui.form select,
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background: #0e192b;
+  border-color: var(--ui-border-strong);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.input > input:focus,
+html[data-theme="dark"] .ui.form input:focus,
+html[data-theme="dark"] .ui.form textarea:focus,
+html[data-theme="dark"] .ui.form select:focus,
+html[data-theme="dark"] .form-control:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+  border-color: var(--ui-primary);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  outline: none;
+}
+
+/* Chrome and Edge paint saved login credentials with a light autofill
+   background. Keep the login fields dark so the light text stays readable. */
+html[data-theme="dark"] #login .ui.input > input {
+  color: var(--ui-text) !important;
+  -webkit-text-fill-color: var(--ui-text);
+  caret-color: var(--ui-text);
+}
+
+html[data-theme="dark"] #login .ui.input > input:-webkit-autofill,
+html[data-theme="dark"] #login .ui.input > input:-webkit-autofill:hover,
+html[data-theme="dark"] #login .ui.input > input:-webkit-autofill:active,
+html[data-theme="dark"] #login .ui.input > input:autofill {
+  background-color: #0e192b !important;
+  border-color: var(--ui-border-strong) !important;
+  -webkit-box-shadow: 0 0 0 1000px #0e192b inset !important;
+  box-shadow: 0 0 0 1000px #0e192b inset !important;
+  -webkit-text-fill-color: var(--ui-text) !important;
+  caret-color: var(--ui-text);
+}
+
+html[data-theme="dark"] #login .ui.input > input:-webkit-autofill:focus,
+html[data-theme="dark"] #login .ui.input > input:autofill:focus {
+  border-color: var(--ui-primary) !important;
+  -webkit-box-shadow: 0 0 0 1000px #0e192b inset, 0 0 0 3px rgba(96, 165, 250, 0.2) !important;
+  box-shadow: 0 0 0 1000px #0e192b inset, 0 0 0 3px rgba(96, 165, 250, 0.2) !important;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #b8c8dc;
+  opacity: 1;
+}
+
+/* Semantic UI targets the WebKit placeholder pseudo-element explicitly. */
+html[data-theme="dark"] .ui.form ::-webkit-input-placeholder,
+html[data-theme="dark"] .ui.form :focus::-webkit-input-placeholder {
+  color: #b8c8dc !important;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .ui.form ::-moz-placeholder,
+html[data-theme="dark"] .ui.form :focus::-moz-placeholder {
+  color: #b8c8dc !important;
+  opacity: 1;
+}
+
+/* Semantic UI's left-icon inputs keep their light-theme black icon color.
+   Brighten the account/password controls in the login and profile forms. */
+html[data-theme="dark"] .ui.left.icon.input > i.icon,
+html[data-theme="dark"] .ui.icon.input > i.icon {
+  color: #9aabc2 !important;
+  opacity: 1;
+}
+
+/* Native file inputs have their own button surface, which otherwise remains
+   light with low-contrast text in the avatar editor. */
+html[data-theme="dark"] .avatar-edit-controls input[type="file"] {
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .avatar-edit-controls input[type="file"]::file-selector-button {
+  background: var(--ui-surface-muted);
+  border: 1px solid var(--ui-border-strong);
+  border-radius: 4px;
+  color: var(--ui-text);
+  cursor: pointer;
+  margin-right: 8px;
+  padding: 6px 10px;
+}
+
+html[data-theme="dark"] .avatar-edit-controls input[type="file"]::file-selector-button:hover {
+  background: #1b3151;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .avatar-edit-help,
+html[data-theme="dark"] .avatar-remove-label,
+html[data-theme="dark"] .avatar-edit-placeholder {
+  color: #b8c8dc !important;
+}
+
+html[data-theme="dark"] input:disabled,
+html[data-theme="dark"] select:disabled,
+html[data-theme="dark"] textarea:disabled,
+html[data-theme="dark"] .form-control:disabled {
+  background: #18253a;
+  color: #7185a1;
+}
+
+html[data-theme="dark"] .ui.form .field > label,
+html[data-theme="dark"] .ui.form label.ui.header {
+  color: #b8c8dc;
+}
+
+html[data-theme="dark"] .ui.selection.dropdown {
+  background: #0e192b;
+  border-color: var(--ui-border-strong);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.selection.dropdown .text,
+html[data-theme="dark"] .ui.selection.dropdown > .dropdown.icon {
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .ui.info.message {
+  background: #142d4c;
+  color: #bfdbfe;
+}
+
+html[data-theme="dark"] .ui.positive.message,
+html[data-theme="dark"] .ui.success.message {
+  background: #12352f;
+  color: #a7f3d0;
+}
+
+html[data-theme="dark"] .ui.warning.message {
+  background: #3a2c16;
+  color: #fde68a;
+}
+
+html[data-theme="dark"] .ui.error.message,
+html[data-theme="dark"] .ui.negative.message {
+  background: #421e2b;
+  color: #fecdd3;
+}
+
+html[data-theme="dark"] .ui.label {
+  background: #243b5c;
+  color: #dbeafe;
+}
+
+html[data-theme="dark"] .ui.basic.label {
+  background: var(--ui-surface-muted) !important;
+  border-color: var(--ui-border-strong) !important;
+}
+
+html[data-theme="dark"] .ui.basic.red.label {
+  border-color: #fb7185 !important;
+  color: #fda4af !important;
+}
+
+html[data-theme="dark"] .ui.basic.green.label {
+  border-color: #34d399 !important;
+  color: #6ee7b7 !important;
+}
+
+html[data-theme="dark"] .ui.pagination.menu {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+
+html[data-theme="dark"] .ui.pagination.menu .item {
+  background: var(--ui-surface);
+  color: var(--ui-muted);
+}
+
+html[data-theme="dark"] .ui.pagination.menu .item:hover,
+html[data-theme="dark"] .ui.pagination.menu .item.active {
+  background: #1b3151;
+  color: var(--ui-primary-hover);
+}
+
+html[data-theme="dark"] .ui.divider,
+html[data-theme="dark"] hr {
+  border-top-color: var(--ui-border);
+}
+
+html[data-theme="dark"] pre,
+html[data-theme="dark"] .hljs {
+  background: #0a1424 !important;
+  border-color: #1d3554;
+  color: #dbeafe;
+}
+
+html[data-theme="dark"] :not(pre) > code {
+  background: #1a2a43;
+  border-color: var(--ui-border);
+  color: #dbeafe;
+}
+
+html[data-theme="dark"] .footer {
+  border-top-color: var(--ui-border) !important;
+  color: var(--ui-muted) !important;
+}
+
+html[data-theme="dark"] .footer a {
+  color: #9bb3d1 !important;
+}
+
+html[data-theme="dark"] .footer a:hover {
+  color: var(--ui-primary-hover) !important;
+}
+
+html[data-theme="dark"] .red {
+  color: #fb7185;
+}
+
+html[data-theme="dark"] .green {
+  color: #34d399;
+}
+
+html[data-theme="dark"] .blue {
+  color: var(--ui-primary);
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0f1a2c;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #334b6d;
+  border-color: #0f1a2c;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #4a6a95;
+}
+
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .well,
+html[data-theme="dark"] .navbar,
+html[data-theme="dark"] .alert {
+  background-color: var(--ui-surface);
+  background-image: none !important;
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .panel-heading,
+html[data-theme="dark"] .panel-footer {
+  background-color: var(--ui-surface-muted);
+  background-image: none !important;
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+html[data-theme="dark"] .submit_time,
+html[data-theme="dark"] .well {
+  color: #cbd5e1 !important;
+}
+
+/* Improve contrast for legacy Bootstrap/SYZOJ text colors in dark mode. */
+html[data-theme="dark"] .text-muted,
+html[data-theme="dark"] .text-secondary,
+html[data-theme="dark"] .muted,
+html[data-theme="dark"] .avatar-remove-label,
+html[data-theme="dark"] .group-qr-panel-label,
+html[data-theme="dark"] #pie_chart_legend li,
+html[data-theme="dark"] .pie_chart-legend li {
+  color: var(--ui-muted) !important;
+}
+
+/* User profile card: Semantic UI applies opaque black text to these nested
+   elements, so they need profile-scoped dark-mode overrides. */
+html[data-theme="dark"] #user_card > .content > .header,
+html[data-theme="dark"] #user_card > .extra.content,
+html[data-theme="dark"] #user_card > .extra.content a,
+html[data-theme="dark"] #user_card .profile-social-summary a,
+html[data-theme="dark"] #user_card .profile-social-summary strong {
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] #user_card > .extra.content a:hover,
+html[data-theme="dark"] #user_card > .extra.content a:focus {
+  color: var(--ui-primary-hover) !important;
+}
+
+html[data-theme="dark"] #user_card > .content .meta,
+html[data-theme="dark"] #user_card > .content .meta a,
+html[data-theme="dark"] #user_card > .extra.content small {
+  color: var(--ui-muted) !important;
+}
+
+html[data-theme="dark"] #user_card > table.table,
+html[data-theme="dark"] #user_card > table.table > tbody > tr,
+html[data-theme="dark"] #user_card > table.table > tbody > tr > th,
+html[data-theme="dark"] #user_card > table.table > tbody > tr > td {
+  background: var(--ui-surface) !important;
+  border-color: var(--ui-border) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] #user_card > table.table-hover > tbody > tr:hover > th,
+html[data-theme="dark"] #user_card > table.table-hover > tbody > tr:hover > td {
+  background: #182a45 !important;
+}
+
+html[data-theme="dark"] .text-dark,
+html[data-theme="dark"] .text-body,
+html[data-theme="dark"] .ui.comments .comment .text,
+html[data-theme="dark"] .ui.feed .event .summary,
+html[data-theme="dark"] .ui.items > .item > .content > .header,
+html[data-theme="dark"] .ui.statistic > .value {
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .ui.comments .comment .author,
+html[data-theme="dark"] .ui.feed .event .date,
+html[data-theme="dark"] .ui.items > .item > .content > .extra,
+html[data-theme="dark"] .ui.breadcrumb .divider {
+  color: var(--ui-muted) !important;
+}
+
+html[data-theme="dark"] .ui.list .item a,
+html[data-theme="dark"] .ui.items > .item > .content > .header a {
+  color: var(--ui-primary) !important;
+}
+
+html[data-theme="dark"] .btn:not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info),
+html[data-theme="dark"] .btn-default {
+  background: var(--ui-surface-muted) !important;
+  border-color: var(--ui-border-strong) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .btn:not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info):hover,
+html[data-theme="dark"] .btn-default:hover,
+html[data-theme="dark"] .btn-default:focus {
+  background: #25405f !important;
+  color: #ffffff !important;
+}
+
+/* Keep result/status colors bright enough on the dark surface. */
+html[data-theme="dark"] .status.success,
+html[data-theme="dark"] .status.submitted,
+html[data-theme="dark"] .status.accepted {
+  color: #6ee7b7 !important;
+}
+
+html[data-theme="dark"] .status.wrong_answer {
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .status.invalid_interaction,
+html[data-theme="dark"] .status.runtime_error,
+html[data-theme="dark"] .status.file_error {
+  color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .status.memory_limit_exceeded,
+html[data-theme="dark"] .status.time_limit_exceeded,
+html[data-theme="dark"] .status.output_limit_exceeded {
+  color: #fdba74 !important;
+}
+
+html[data-theme="dark"] .status.waiting,
+html[data-theme="dark"] .status.system_error,
+html[data-theme="dark"] .status.skipped {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .status.running {
+  color: #7dd3fc !important;
+}
+
+html[data-theme="dark"] .status.partially_correct,
+html[data-theme="dark"] .status.compiling {
+  color: #5eead4 !important;
+}
+
+html[data-theme="dark"] .status.judgement_failed {
+  color: #fb923c !important;
+}
+
+html[data-theme="dark"] .status.no_testdata {
+  color: #fca5a5 !important;
+}
+
+html[data-theme="dark"] .status.compile_error {
+  color: #93c5fd !important;
+}
+
+html[data-theme="dark"] .score_0,
+html[data-theme="dark"] .rating_up {
+  color: #fb7185 !important;
+}
+
+html[data-theme="dark"] .score_1,
+html[data-theme="dark"] .score_2 {
+  color: #fb923c !important;
+}
+
+html[data-theme="dark"] .score_3 {
+  color: #fbbf24 !important;
+}
+
+html[data-theme="dark"] .score_4 {
+  color: #fde047 !important;
+}
+
+html[data-theme="dark"] .score_5 {
+  color: #d9f99d !important;
+}
+
+html[data-theme="dark"] .score_6 {
+  color: #bef264 !important;
+}
+
+html[data-theme="dark"] .score_7,
+html[data-theme="dark"] .score_8 {
+  color: #86efac !important;
+}
+
+html[data-theme="dark"] .score_9,
+html[data-theme="dark"] .score_10,
+html[data-theme="dark"] .rating_down {
+  color: #6ee7b7 !important;
+}
+
+/* Legacy QR controls and inline-style elements. */
+html[data-theme="dark"] .group-qr-toggle {
+  background: var(--ui-surface-muted) !important;
+  border-color: var(--ui-border-strong) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .group-qr-toggle:hover,
+html[data-theme="dark"] .group-qr-toggle:focus,
+html[data-theme="dark"] .group-qr-dropdown.is-open .group-qr-toggle {
+  background: #1b3151 !important;
+  color: var(--ui-primary-hover) !important;
+}
+
+html[data-theme="dark"] .copy {
+  background: #1a2a43 !important;
+  border: 1px solid var(--ui-border-strong);
+  color: #dbeafe !important;
+}
+
+html[data-theme="dark"] #source,
+html[data-theme="dark"] #input_text,
+html[data-theme="dark"] #out,
+html[data-theme="dark"] #language_span {
+  background-color: #0e192b !important;
+  border-color: var(--ui-border-strong) !important;
+  color: var(--ui-text) !important;
+}
+
+html[data-theme="dark"] .ace_editor,
+html[data-theme="dark"] .ace-chrome {
+  background: #0e192b !important;
+  color: #dbeafe !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_gutter {
+  background: #111c2e !important;
+  color: #9aabc2 !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_print-margin {
+  background: transparent !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_cursor {
+  color: #f8fafc !important;
+  border-left-color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_marker-layer .ace_active-line {
+  background: rgba(96, 165, 250, 0.16) !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_keyword,
+html[data-theme="dark"] .ace-chrome .ace_storage {
+  color: #93c5fd !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_string {
+  color: #86efac !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_comment {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .ace-chrome .ace_constant,
+html[data-theme="dark"] .ace-chrome .ace_variable {
+  color: #fdba74 !important;
+}
+
+@media print {
+  html[data-theme="dark"] body {
+    background: #ffffff !important;
+    color: #000000;
+  }
+}
