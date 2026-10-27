@@ -1,70 +1,54 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { api, ensureCsrf, errorMessage } from '../services/api'
 import { useAuthStore } from '../stores/auth'
-
-interface AiConfigStatus { configured: boolean; baseUrl: string; model: string; configuredAt: string | null }
-
-const status = ref<AiConfigStatus>({ configured: false, baseUrl: '', model: '', configuredAt: null })
+interface Status { configured: boolean; baseUrl: string; model: string; configuredAt: string | null }
+interface Provider { provider: string; label: string; defaultBaseUrl: string; defaultModel: string; status: Status }
+interface Editor extends Provider { baseUrl: string; model: string; apiKey: string; busy: boolean; reveal: boolean }
 const auth = useAuthStore()
-const form = reactive({
-  baseUrl: auth.isSuperAdmin ? 'https://api.deepseek.com' : '',
-  model: auth.isSuperAdmin ? 'deepseek-v4-flash' : '',
-  apiKey: '',
-})
-const busy = ref(false)
+const providers = ref<Editor[]>([])
 const error = ref('')
 const notice = ref('')
-const revealKey = ref(false)
-
-function formatDate(value: string | null) {
-  return value ? value.replace('T', ' ').slice(0, 19) : '—'
-}
+const roles: Record<string, string> = { deepseek: '题目拉取、AI 教学；测试数据标准解', qwen: '覆盖计划与数据生成器', glm: '独立解法、输入校验与反例攻击', kimi: '可选的代码与覆盖复核' }
 async function load() {
   try {
-    status.value = (await api.get<AiConfigStatus>('/admin/ai-config')).data
-    if (status.value.baseUrl) form.baseUrl = status.value.baseUrl
-    if (status.value.model) form.model = status.value.model
+    const { data } = await api.get<Provider[]>('/admin/ai-config/providers')
+    providers.value = data.map(p => ({ ...p, baseUrl: p.status.baseUrl || p.defaultBaseUrl, model: p.status.model || p.defaultModel, apiKey: '', busy: false, reveal: false }))
   } catch (e) { error.value = errorMessage(e) }
 }
-async function save() {
-  busy.value = true; error.value = ''; notice.value = ''
+async function save(p: Editor) {
+  p.busy = true; error.value = ''; notice.value = ''
   try {
     await ensureCsrf()
-    status.value = (await api.put<AiConfigStatus>('/admin/ai-config', form)).data
-    form.apiKey = ''
-    revealKey.value = false
-    notice.value = '智能体配置已加密保存，项目重启后仍然有效。'
+    p.status = (await api.put<Status>(`/admin/ai-config/${p.provider}`, { baseUrl: p.baseUrl, model: p.model, apiKey: p.apiKey })).data
+    p.apiKey = ''; p.reveal = false; notice.value = `${p.label} 配置已加密保存，重启后仍然有效。`
   } catch (e) { error.value = errorMessage(e) }
-  finally { busy.value = false }
+  finally { p.busy = false }
 }
-async function clearConfig() {
-  if (!window.confirm('确定清除已持久化的智能体配置吗？清除后题目拉取将不再可用。')) return
-  busy.value = true; error.value = ''; notice.value = ''
+async function clear(p: Editor) {
+  if (!window.confirm(`确定清除 ${p.label} 配置吗？使用它的功能将暂停。`)) return
+  p.busy = true; error.value = ''; notice.value = ''
   try {
-    await ensureCsrf()
-    await api.delete('/admin/ai-config')
-    status.value = { configured: false, baseUrl: '', model: '', configuredAt: null }
-    form.apiKey = ''
-    notice.value = '已清除持久化的智能体配置。'
+    await ensureCsrf(); await api.delete(`/admin/ai-config/${p.provider}`)
+    p.status = { configured: false, baseUrl: '', model: '', configuredAt: null }
+    p.apiKey = ''; p.reveal = false; notice.value = `已清除 ${p.label} 配置。`
   } catch (e) { error.value = errorMessage(e) }
-  finally { busy.value = false }
+  finally { p.busy = false }
 }
 onMounted(load)
 </script>
-
 <template>
-  <div class="page-head"><div><h2>智能体配置</h2><span class="muted">题目拉取全流程共用</span></div><span :class="['agent-status', status.configured ? 'configured' : 'missing']">{{ status.configured ? '已配置' : '未配置' }}</span></div>
-  <p v-if="error" class="error">{{ error }}</p>
-  <p v-if="notice" class="card success agent-config-notice">{{ notice }}</p>
-
-  <section class="card agent-config-card form-stack">
-    <div class="agent-config-lifetime"><strong>长期有效</strong><span>配置持久化保存，API Key 使用 AES-GCM 加密且不会回显。后端容器重启后无需重新填写。</span></div>
-    <div v-if="!auth.isSuperAdmin" class="agent-config-readonly"><strong>只读模式</strong><span>普通管理员可以查看当前配置状态，但只有超级管理员能修改接口、模型和 API Key。</span></div>
-    <div class="field"><label>Chat Completions 接口</label><input v-model.trim="form.baseUrl" :disabled="!auth.isSuperAdmin" type="url" maxlength="500" placeholder="https://api.deepseek.com 或 https://api.openai.com/v1" /><small class="muted">可以填写服务根地址，也可以填写完整的 /chat/completions 地址。</small></div>
-    <div class="field"><label>模型名称</label><input v-model.trim="form.model" :disabled="!auth.isSuperAdmin" maxlength="200" placeholder="deepseek-v4-flash" /></div>
-    <div class="field"><label>API Key</label><div class="agent-key-field"><input v-model="form.apiKey" :disabled="!auth.isSuperAdmin" :type="revealKey ? 'text' : 'password'" maxlength="8000" autocomplete="new-password" :placeholder="status.configured ? '已安全保存，不回显明文' : (auth.isSuperAdmin ? '首次配置必须填写' : '尚未配置')" /><button v-if="auth.isSuperAdmin" class="button secondary" type="button" @click="revealKey = !revealKey">{{ revealKey ? '隐藏' : '显示' }}</button></div><small class="muted">API Key 不会向任何管理员回显明文。</small></div>
-    <div v-if="status.configured" class="agent-current-config"><div><span>当前接口</span><strong>{{ status.baseUrl }}</strong></div><div><span>当前模型</span><strong>{{ status.model }}</strong></div><div><span>配置时间</span><strong>{{ formatDate(status.configuredAt) }}</strong></div></div>
-    <div class="toolbar"><button v-if="auth.isSuperAdmin" class="button" :disabled="busy || !form.baseUrl || !form.model || (!status.configured && !form.apiKey)" @click="save">{{ busy ? '保存中…' : '保存配置' }}</button><button v-if="auth.isSuperAdmin && status.configured" class="button danger" :disabled="busy" @click="clearConfig">清除配置</button><RouterLink class="button secondary" to="/admin/problem-import">进入题目拉取</RouterLink></div>
+  <div class="page-head"><div><h2>智能体配置</h2><span class="muted">DeepSeek / Qwen / GLM / Kimi 统一管理</span></div><RouterLink class="button secondary" to="/admin/test-data">生成测试数据</RouterLink></div>
+  <p v-if="error" class="error" role="alert">{{ error }}</p>
+  <p v-if="notice" class="card success" role="status">{{ notice }}</p>
+  <div class="card agent-config-lifetime"><strong>长期有效</strong><span>四家服务独立保存接口、模型与 API Key。密钥加密存储且不回显；原有 DeepSeek 配置自动沿用。模型名称可按账户实际权限修改。</span></div>
+  <p v-if="!auth.isSuperAdmin" class="muted">当前为只读模式，只有超级管理员可以修改配置。</p>
+  <section v-for="p in providers" :key="p.provider" class="card agent-config-card form-stack" style="margin-top:20px">
+    <div class="page-head"><div><h2>{{ p.label }}</h2><span class="muted">{{ roles[p.provider] }}</span></div><span :class="['agent-status', p.status.configured ? 'configured' : 'missing']">{{ p.status.configured ? '已配置' : '未配置' }}</span></div>
+    <div class="field"><label :for="`${p.provider}-url`">Chat Completions 接口</label><input :id="`${p.provider}-url`" v-model.trim="p.baseUrl" :disabled="!auth.isSuperAdmin || p.busy" type="url" maxlength="500" :placeholder="p.defaultBaseUrl" /><small class="muted">可填写根地址或完整的 /chat/completions 地址；更换地址时需要重新填写密钥。</small></div>
+    <div class="field"><label :for="`${p.provider}-model`">模型名称</label><input :id="`${p.provider}-model`" v-model.trim="p.model" :disabled="!auth.isSuperAdmin || p.busy" maxlength="200" :placeholder="p.defaultModel" /></div>
+    <div class="field"><label :for="`${p.provider}-key`">API Key</label><div class="agent-key-field"><input :id="`${p.provider}-key`" v-model="p.apiKey" :disabled="!auth.isSuperAdmin || p.busy" :type="p.reveal ? 'text' : 'password'" maxlength="8000" autocomplete="new-password" :placeholder="p.status.configured ? '留空保留已保存的密钥' : '首次配置必须填写'" /><button v-if="auth.isSuperAdmin" class="button secondary" type="button" @click="p.reveal = !p.reveal">{{ p.reveal ? '隐藏' : '显示' }}</button></div></div>
+    <small v-if="p.status.configuredAt" class="muted">保存时间：{{ new Date(p.status.configuredAt).toLocaleString() }}</small>
+    <div v-if="auth.isSuperAdmin" class="toolbar"><button class="button" :disabled="p.busy || !p.baseUrl || !p.model || (!p.status.configured && !p.apiKey)" @click="save(p)">{{ p.busy ? '处理中…' : `保存 ${p.label}` }}</button><button v-if="p.status.configured" class="button danger" :disabled="p.busy" @click="clear(p)">清除配置</button></div>
   </section>
 </template>

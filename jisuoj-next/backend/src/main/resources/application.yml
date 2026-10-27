@@ -1,6 +1,8 @@
 spring:
   application:
     name: jisuoj-backend
+  config:
+    import: "optional:file:${user.home}/.config/jisuoj/testdata.env[.properties]"
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/jol?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
     username: ${DB_USERNAME:jisuoj}
@@ -39,13 +41,16 @@ management:
 
 jisuoj:
   data-dir: ${JUDGE_DATA_DIR:/home/judge/data}
+  test-data:
+    runner-url: ${TEST_DATA_RUNNER_URL:}
+    runner-token: ${TEST_DATA_RUNNER_TOKEN:}
   ai:
     config-encryption-secret: ${AI_CONFIG_SECRET:change-this-development-ai-config-secret-before-production}
     teaching-hourly-limit: ${AI_TEACHING_HOURLY_LIMIT:30}
     teaching-skills:
       enabled: ${AI_TEACHING_SKILLS_ENABLED:true}
     rag:
-      enabled: ${AI_RAG_ENABLED:true}
+      enabled: ${AI_RAG_ENABLED:false}
       base-url: ${AI_RAG_BASE_URL:http://127.0.0.1:8765}
       token: ${AI_RAG_TOKEN:}
       top-k: ${AI_RAG_TOP_K:3}

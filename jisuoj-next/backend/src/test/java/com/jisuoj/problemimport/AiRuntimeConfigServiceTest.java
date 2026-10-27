@@ -22,6 +22,43 @@ import static org.mockito.Mockito.when;
 class AiRuntimeConfigServiceTest {
     private static final String SECRET = "test-ai-config-secret-with-at-least-32-characters";
 
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.EnumSource(AiProvider.class)
+    void providersHaveIndependentEncryptedRowsAndRetainTheirOwnKeys(AiProvider provider) throws Exception {
+        JdbcTemplate jdbc = mock(JdbcTemplate.class);
+        var config = new AiRuntimeConfigService(jdbc, SECRET);
+        String key = "fixture-key-" + provider.key();
+        config.configure(provider, provider.baseUrl, provider.model, key);
+        var ciphertext = org.mockito.ArgumentCaptor.forClass(String.class);
+        verify(jdbc).update(contains("INSERT INTO jisu_ai_config"), eq(provider.configId), eq(provider.baseUrl),
+                eq(provider.model), ciphertext.capture(), any(Timestamp.class));
+        when(jdbc.query(contains("api_key_ciphertext"),
+                org.mockito.ArgumentMatchers.<RowMapper<AiRuntimeConfigService.Config>>any(), eq(provider.configId)))
+                .thenAnswer(invocation -> {
+                    RowMapper<AiRuntimeConfigService.Config> mapper = invocation.getArgument(1);
+                    ResultSet rs = mock(ResultSet.class);
+                    when(rs.getString("base_url")).thenReturn(provider.baseUrl);
+                    when(rs.getString("model")).thenReturn(provider.model);
+                    when(rs.getString("api_key_ciphertext")).thenReturn(ciphertext.getValue());
+                    when(rs.getTimestamp("updated_at")).thenReturn(Timestamp.from(Instant.now()));
+                    return List.of(mapper.mapRow(rs, 0));
+                });
+        assertThat(config.requireConfig(provider).apiKey()).isEqualTo(key);
+        assertThat(config.requireConfig(provider).toString()).doesNotContain(key);
+        assertThat(config.configure(provider, provider.baseUrl, "replacement-model", "").configured()).isTrue();
+        org.assertj.core.api.Assertions.assertThatThrownBy(() ->
+                config.configure(provider, "https://different-provider.invalid/v1", provider.model, ""))
+                .hasMessageContaining("重新填写 API Key");
+    }
+
+    @Test void firstConfigurationNeedsAKeyAndRejectsCredentialsInTheUrl() {
+        var config = new AiRuntimeConfigService(mock(JdbcTemplate.class), SECRET);
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> config.configure(AiProvider.QWEN, "https://fixture.invalid", "model", ""))
+                .hasMessageContaining("首次配置");
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> config.configure(AiProvider.KIMI, "https://user:password@fixture.invalid", "model", "key"))
+                .hasMessageContaining("HTTP(S)");
+    }
+
     @Test
     void persistsEncryptedKeyAndCanReadItAfterServiceRecreation() throws Exception {
         JdbcTemplate writerJdbc = mock(JdbcTemplate.class);

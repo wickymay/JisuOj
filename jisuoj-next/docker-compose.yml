@@ -40,6 +40,8 @@ services:
       AI_RAG_TOKEN: ${AI_RAG_TOKEN:-}
       AI_RAG_TOP_K: ${AI_RAG_TOP_K:-3}
       AI_RAG_MIN_SCORE: ${AI_RAG_MIN_SCORE:-0.45}
+      TEST_DATA_RUNNER_URL: ${TEST_DATA_RUNNER_URL:-}
+      TEST_DATA_RUNNER_TOKEN: ${TEST_DATA_RUNNER_TOKEN:-}
       TZ: Asia/Shanghai
     volumes:
       - judge-data:/home/judge/data

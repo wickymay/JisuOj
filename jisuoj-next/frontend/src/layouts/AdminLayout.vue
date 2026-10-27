@@ -25,6 +25,7 @@ const groups = computed<MenuGroup[]>(() => {
       { to: '/admin/problems', label: '管理题目', icon: '▤', roles: ['ROLE_ADMIN', 'ROLE_PROBLEM_EDITOR'] },
       { to: '/admin/problems/new', label: '新增题目', icon: '+', roles: ['ROLE_ADMIN', 'ROLE_PROBLEM_EDITOR'] },
       { to: '/admin/problem-import', label: '拉取 / 导入题目', icon: '↥', roles: ['ROLE_ADMIN', 'ROLE_PROBLEM_EDITOR'] },
+      { to: '/admin/test-data', label: '生成测试数据', icon: '◇', roles: ['ROLE_ADMIN', 'ROLE_PROBLEM_EDITOR'] },
     ] },
     { label: '竞赛管理', icon: '⚑', items: [
       { to: '/contests', label: '竞赛列表', icon: '☷', roles: ['ROLE_ADMIN', 'ROLE_CONTEST_CREATOR'] },

@@ -33,6 +33,7 @@ const router = createRouter({
       children: [
         { path: '', component: () => import('./views/AdminView.vue'), meta: { title: '管理首页' } },
         { path: 'ai-config', component: () => import('./views/AdminAiConfigView.vue'), meta: { title: '智能体配置' } },
+        { path: 'test-data', component: () => import('./views/AdminTestDataView.vue'), meta: { title: '测试数据生成' } },
         { path: 'problem-import', component: () => import('./views/ProblemImportView.vue'), meta: { title: '拉取题目' } },
         { path: 'problems', component: () => import('./views/AdminProblemsView.vue'), meta: { title: '题目管理' } },
         { path: 'problems/new', component: () => import('./views/AdminProblemEditorView.vue'), meta: { title: '新建题目' } },

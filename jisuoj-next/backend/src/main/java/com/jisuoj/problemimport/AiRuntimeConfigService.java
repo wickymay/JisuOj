@@ -20,12 +20,11 @@ import java.util.Base64;
 import java.util.List;
 
 /**
- * Persists the problem-import assistant configuration in the database.
+ * Persists the four domestic providers together; row 1 remains the existing default assistant.
  * The API key is encrypted at rest and is never included in status responses.
  */
 @Service
 public class AiRuntimeConfigService {
-    private static final int CONFIG_ID = 1;
     private static final int GCM_IV_BYTES = 12;
     private static final int GCM_TAG_BITS = 128;
     private static final byte[] AAD = "jisuoj-ai-config-v1".getBytes(StandardCharsets.UTF_8);
@@ -41,21 +40,32 @@ public class AiRuntimeConfigService {
     }
 
     public Status status() {
+        return status(AiProvider.DEEPSEEK);
+    }
+
+    public Status status(AiProvider provider) {
         List<Status> rows = jdbc.query(
                 "SELECT base_url,model,updated_at FROM jisu_ai_config WHERE id=?",
                 (rs, rowNum) -> new Status(true, rs.getString("base_url"), rs.getString("model"),
                         rs.getTimestamp("updated_at").toInstant()),
-                CONFIG_ID);
+                provider.configId);
         return rows.isEmpty() ? new Status(false, "", "", null) : rows.get(0);
     }
 
     public Status configure(String baseUrl, String model, String apiKey) {
+        return configure(AiProvider.DEEPSEEK, baseUrl, model, apiKey);
+    }
+
+    public Status configure(AiProvider provider, String baseUrl, String model, String apiKey) {
         String endpoint = normalizeEndpoint(baseUrl);
         String normalizedModel = required(model, "模型名称不能为空");
         String normalizedKey = apiKey == null ? "" : apiKey.trim();
         if (normalizedKey.isBlank()) {
-            Config previous = findConfig();
+            Config previous = findConfig(provider);
             if (previous != null) {
+                if (!previous.baseUrl().equals(endpoint)) {
+                    throw ApiException.badRequest("更换接口地址时请重新填写 API Key");
+                }
                 normalizedKey = previous.apiKey();
             }
         }
@@ -68,33 +78,45 @@ public class AiRuntimeConfigService {
         jdbc.update("INSERT INTO jisu_ai_config(id,base_url,model,api_key_ciphertext,updated_at) " +
                         "VALUES(?,?,?,?,?) ON DUPLICATE KEY UPDATE base_url=VALUES(base_url),model=VALUES(model)," +
                         "api_key_ciphertext=VALUES(api_key_ciphertext),updated_at=VALUES(updated_at)",
-                CONFIG_ID, endpoint, normalizedModel, encryptedKey, java.sql.Timestamp.from(configuredAt));
+                provider.configId, endpoint, normalizedModel, encryptedKey, java.sql.Timestamp.from(configuredAt));
         return new Status(true, endpoint, normalizedModel, configuredAt);
     }
 
     public void clear() {
-        jdbc.update("DELETE FROM jisu_ai_config WHERE id=?", CONFIG_ID);
+        clear(AiProvider.DEEPSEEK);
+    }
+
+    public void clear(AiProvider provider) {
+        jdbc.update("DELETE FROM jisu_ai_config WHERE id=?", provider.configId);
     }
 
     public boolean configured() {
-        Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM jisu_ai_config WHERE id=?", Integer.class, CONFIG_ID);
+        return configured(AiProvider.DEEPSEEK);
+    }
+
+    public boolean configured(AiProvider provider) {
+        Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM jisu_ai_config WHERE id=?", Integer.class, provider.configId);
         return count != null && count > 0;
     }
 
     public Config requireConfig() {
-        Config config = findConfig();
+        return requireConfig(AiProvider.DEEPSEEK);
+    }
+
+    public Config requireConfig(AiProvider provider) {
+        Config config = findConfig(provider);
         if (config == null) {
-            throw ApiException.badRequest("智能体尚未配置，请先在管理中心填写接口、模型和 API Key");
+            throw ApiException.badRequest(provider.label + " 尚未配置，请先在管理中心填写接口、模型和 API Key");
         }
         return config;
     }
 
-    private Config findConfig() {
+    private Config findConfig(AiProvider provider) {
         List<Config> rows = jdbc.query(
                 "SELECT base_url,model,api_key_ciphertext,updated_at FROM jisu_ai_config WHERE id=?",
                 (rs, rowNum) -> new Config(rs.getString("base_url"), decrypt(rs.getString("api_key_ciphertext")),
                         rs.getString("model"), rs.getTimestamp("updated_at").toInstant()),
-                CONFIG_ID);
+                provider.configId);
         return rows.isEmpty() ? null : rows.get(0);
     }
 
@@ -107,7 +129,8 @@ public class AiRuntimeConfigService {
             throw ApiException.badRequest("智能体接口必须是完整的 HTTP(S) URL");
         }
         String scheme = uri.getScheme();
-        if (uri.getHost() == null || scheme == null ||
+        if (uri.getHost() == null || uri.getUserInfo() != null || uri.getQuery() != null ||
+                uri.getFragment() != null || scheme == null ||
                 !("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme))) {
             throw ApiException.badRequest("智能体接口必须是完整的 HTTP(S) URL");
         }
@@ -171,6 +194,7 @@ public class AiRuntimeConfigService {
     }
 
     public record Config(String baseUrl, String apiKey, String model, Instant configuredAt) {
+        @Override public String toString() { return "Config[model=" + model + ", apiKey=REDACTED]"; }
     }
 
     public record Status(boolean configured, String baseUrl, String model, Instant configuredAt) {

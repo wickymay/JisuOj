@@ -6,7 +6,16 @@ export DB_USERNAME="${DB_USERNAME:-jisuoj}"
 export DB_PASSWORD="${DB_PASSWORD:-jisuoj-dev}"
 export JUDGE_NOTIFY_ENABLED="${JUDGE_NOTIFY_ENABLED:-false}"
 project="$(cd .. && pwd)"
-if [[ "${AI_RAG_ENABLED:-true}" == "true" && "${AI_RAG_BASE_URL:-http://127.0.0.1:8765}" == "http://127.0.0.1:8765" ]]; then
+test_data_env="${XDG_CONFIG_HOME:-$HOME/.config}/jisuoj/testdata.env"
+if [[ -f "$test_data_env" ]]; then
+    while IFS='=' read -r name value; do
+        case "$name" in
+            TEST_DATA_RUNNER_URL) export TEST_DATA_RUNNER_URL="${TEST_DATA_RUNNER_URL:-$value}" ;;
+            TEST_DATA_RUNNER_TOKEN) export TEST_DATA_RUNNER_TOKEN="${TEST_DATA_RUNNER_TOKEN:-$value}" ;;
+        esac
+    done < "$test_data_env"
+fi
+if [[ "${AI_RAG_ENABLED:-false}" == "true" && "${AI_RAG_BASE_URL:-http://127.0.0.1:8765}" == "http://127.0.0.1:8765" ]]; then
     if ! curl --silent --fail --max-time 2 http://127.0.0.1:8765/health >/dev/null; then
         if [[ -x "$project/.venv-rag/bin/python" ]]; then
             mkdir -p "$project/tmp"

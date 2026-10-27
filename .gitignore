@@ -1,6 +1,7 @@
 # Local configuration and credentials
 .env
 .env.*
+*.env
 !.env.example
 *.local.php
 global.php

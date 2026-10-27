@@ -2,7 +2,7 @@
 
 在线评测与 AI 编程教学平台。基于 HUSTOJ 二次开发，包含 Vue 3 + Spring Boot 的新版站点、保留的 PHP 兼容站点，以及共用的 Linux C++ 判题核心。
 
-本仓库为 2026-10-20 整理的 **v0.1.0 源码基线**。功能和验证范围见下文及 [发布记录](docs/RELEASE.md)。
+本仓库基于 2026-10-20 整理的 **v0.1.0 源码基线**，源码更新已整理至 **2026-10-27**。功能和验证范围见下文及 [发布记录](docs/RELEASE.md)。
 
 ## 功能
 
@@ -11,6 +11,8 @@
 - 竞赛列表、私有竞赛加入、题目编排和 ACM 排名。
 - 后台题目、竞赛、公告、用户和管理员管理。
 - Codeforces / PTA / 手工题面导入，支持人工审核、测试数据 ZIP 与导入审计。
+- 国内模型协作生成测试数据：Qwen 生成器、DeepSeek 标准解、GLM 独立解与校验、可选 Kimi 复核；通过独立 rootless Podman 执行器验证后采用或导出 ZIP。
+- 题目拉取自动暂存：题面、程序、当前步骤与已选 ZIP 按账号在当前浏览器保留 24 小时。
 - AI 编程教学：题目和代码附件、分级提示、调试建议及 12 个专题教学方法。
 - 可选的本地 Qwen3 Embedding 检索服务；模型和知识库需要另行配置。
 
@@ -24,6 +26,7 @@ JisuOj/
 │   ├── frontend/       Vue 3、TypeScript、Vite
 │   ├── backend/        Spring Boot 3.5.7、Java 17
 │   ├── judge-agent/    Linux 判题容器
+│   ├── testdata-runner/ 独立的 rootless Podman 测试数据执行器
 │   ├── rag/            可选的本地知识检索服务
 │   ├── scripts/        开发与教学资源校验工具
 │   ├── docs/           架构、部署和迁移说明
@@ -114,6 +117,7 @@ Vite 默认将 `/api` 转发至 `http://localhost:8080`；可通过 `VITE_DEV_AP
 
 - [架构](jisuoj-next/docs/ARCHITECTURE.md) · [部署与迁移](jisuoj-next/docs/DEPLOYMENT.md)
 - [AI 教学资源](jisuoj-next/docs/TEACHING_SKILLS.md) · [可选知识检索](jisuoj-next/docs/RAG.md)
+- [测试数据生成与隔离执行器](jisuoj-next/docs/TEST_DATA_GENERATION.md)
 - [发布内容与验证范围](docs/RELEASE.md) · [旧站使用说明](docs/LEGACY.md)
 - [上游及第三方说明](THIRD_PARTY_NOTICES.md)
 
